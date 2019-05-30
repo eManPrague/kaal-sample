@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Toolbar.Title" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Toolbar.Theme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <!--<item name="fontPath">@string/font_bold</item>-->
+        <item name="android:colorControlNormal">@color/white</item>
+        <item name="android:colorButtonNormal">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorButtonNormal">@color/white</item>
+    </style>
+
+
+    <style name="Toolbar.Title.Dark">
+        <item name="android:textColor">#FF002664</item>
+        <item name="android:fontFamily">Ubuntu</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Toolbar.Subtitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ScreenContainer">
+        <item name="android:paddingStart">@dimen/screenStartEndPadding</item>
+        <item name="android:paddingEnd">@dimen/screenStartEndPadding</item>
+        <item name="android:paddingTop">@dimen/screenTopBottomPadding</item>
+        <item name="android:paddingBottom">@dimen/screenTopBottomPadding</item>
+    </style>
+
+    <style name="TextHeadline">
+        <item name="android:textSize">@dimen/text_size_head</item>
+        <item name="android:layout_marginTop">@dimen/text_head_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/text_head_margin_bottom</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextNormal">
+        <item name="android:textSize">@dimen/text_size_normal</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+</resources>

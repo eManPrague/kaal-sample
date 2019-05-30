@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screenStartEndPadding">32dp</dimen>
+    <dimen name="screenTopBottomPadding">16dp</dimen>
+
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_head">24sp</dimen>
+    <dimen name="text_head_margin_top">10dp</dimen>
+    <dimen name="text_head_margin_bottom">10dp</dimen>
+    <dimen name="error_message_margin">50dp</dimen>
+    <dimen name="error_button_margin">15dp</dimen>
+
+    <dimen name="detail_gegeric_margin">25dp</dimen>
+
+</resources>

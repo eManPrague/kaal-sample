@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="BaseGruntTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="GruntTheme" parent="BaseGruntTheme" />
+
+    <style name="GruntTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="GruntTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar"/>
+
+    <style name="GruntTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light"/>
+
+<!--    <style name="Toolbar.Theme" parent="ThemeOverlay.AppCompat.ActionBar">-->
+<!--        <item name="android:colorControlNormal">@color/white</item>-->
+<!--        <item name="android:colorButtonNormal">@color/white</item>-->
+<!--        <item name="colorControlNormal">@color/white</item>-->
+<!--        <item name="colorButtonNormal">@color/white</item>-->
+<!--    </style>-->
+
+</resources>

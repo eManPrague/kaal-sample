@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Kaal Sample</string>
+
+    <!-- Popular Movies -->
+    <string name="popular_movies_title">Popular Movies</string>
+
+    <!-- User's Favorites Movies-->
+    <string name="user_favorite_movies_title">My Favorite Movies</string>
+
+    <!-- Search Movie -->
+    <string name="search_movie_title">Search Movie</string>
+    <string name="search_movie_hint_search">Type here to search a movie...</string>
+
+    <string name="bottom_navigation_main_title_popular">Popular</string>
+    <string name="bottom_navigation_main_title_favorite">My Favorites</string>
+    <string name="bottom_navigation_main_title_search">Search</string>
+
+
+    <!-- Transitions - not translate it-->
+    <string name="transition_poster" translatable="false">poster_transition</string>
+    <string name="transition_title" translatable="false">title_transition</string>
+
+
+    <!-- dialogues -->
+    <string name="error_message_title">Ups!</string>
+    <string name="error_message_text_basic">Something went wrong.</string>
+    <string name="error_message_text_with_additional_info">Something went wrong: %1$s</string>
+    <string name="error_message_button_try_again">Try Again</string>
+    <string name="error_message_button_back">Back</string>
+
+    <string name="splash_fragment_title">Splash</string>
+
+
+    <!-- Login -->
+    <string name="login_fragment_title">Login</string>
+    <string name="login_screen_user_hint">Username</string>
+    <string name="login_screen_password_hint">Password</string>
+    <string name="login_screen_register">Register</string>
+    <string name="login_screen_login">Login</string>
+    <string name="login_screen_register_u"><u>Register</u></string>
+    <string name="login_screen_login_u"><u>Login</u></string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Quisque tincidunt scelerisque libero. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Pellentesque arcu. Aenean placerat. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam. Nullam justo enim, consectetuer nec, ullamcorper ac, vestibulum in, elit. Sed ac dolor sit amet purus malesuada congue. Aliquam erat volutpat.</string>
+
+</resources>

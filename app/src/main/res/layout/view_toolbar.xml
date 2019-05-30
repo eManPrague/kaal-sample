@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="4dp">
+
+    <!-- Toolbar is the actual app bar with text and the action items -->
+    <android.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/Toolbar.Theme"
+        app:subtitleTextAppearance="@style/Toolbar.Subtitle"
+        app:titleTextAppearance="@style/Toolbar.Title">
+
+    </android.widget.Toolbar>
+
+</com.google.android.material.appbar.AppBarLayout>

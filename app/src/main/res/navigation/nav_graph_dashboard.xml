@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/popularMoviesFragment">
+
+    <fragment
+        android:id="@+id/popularMoviesFragment"
+        android:name="cz.eman.kaalsample.presentation.feature.popularmovies.PopularMoviesFragment"
+        android:label="@string/popular_movies_title"
+        tools:layout="@layout/fragment_popular_movies">
+        <action
+            android:id="@+id/action_popularMoviesFragment_to_detailMovieActivity"
+            app:destination="@id/detailMovieActivity" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/favoriteMoviesFragment"
+        android:name="cz.eman.kaalsample.presentation.feature.favorities.MyFavoriteMoviesFragment"
+        android:label="@string/user_favorite_movies_title"
+        tools:layout="@layout/fragment_my_favorite_movies">
+        <action
+            android:id="@+id/action_favoriteMoviesFragment_to_detailMovieActivity"
+            app:destination="@id/detailMovieActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchMovieFragment"
+        android:name="cz.eman.kaalsample.presentation.feature.search.SearchMovieFragment"
+        android:label="@string/search_movie_title"
+        tools:layout="@layout/fragment_search_movies" />
+
+    <activity
+        android:id="@+id/detailMovieActivity"
+        android:name="cz.eman.kaalsample.presentation.feature.detail.DetailActivity"
+        tools:layout="@layout/activity_detail" />
+
+
+</navigation>
