@@ -1,4 +1,5 @@
 import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.dokka.gradle.LinkMapping
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.ByteArrayOutputStream
 
@@ -34,14 +35,16 @@ val dokka by tasks.getting(DokkaTask::class) {
     moduleName = "data"
     outputFormat = "html" // html, md, javadoc,
     outputDirectory = "$buildDir/dokka/html"
-/*    processConfigurations = ["compile"]
-    includes = ["../CHANGELOG.md"]
+    //processConfigurations = ["compile"]
     //samples = ["samples/basic.kt", "samples/advanced.kt"]
-    linkMapping {
-        dir = "src/main/kotlin"
-        url = "https://gitlab.eman.cz/TBD/TBD/TBD/tree/dev/TBD/src/main/kotlin"
+    includes = listOf("../README.md")
+    val file = File(project.projectDir,"src/main/kotlin")
+    val relativePath = rootDir.toPath().relativize(file.toPath()).toString()
+    linkMapping(delegateClosureOf<LinkMapping> {
+        dir = file.path
+        url = "https://github.com/eManPrague/kaal-sample/tree/master/$relativePath"
         suffix = "#L"
-    }*/
+    })
     sourceDirs = files("src/main/kotlin")
 }
 

@@ -6,15 +6,6 @@ fun Project.findPropertyOrNull(s: String) = findProperty(s) as String?
 
 fun Project.getProperty(propertyName: String) = property(propertyName)
 
-fun Project.getNexusCredentials(): Pair<String, String>? {
-    val username = findPropertyOrNull("nexusUsername")
-    val password = findPropertyOrNull("nexusPassword")
-
-    if (username == null || password == null) return null
-
-    return Pair<String, String>(username, password)
-}
-
 fun Project.getPropertyOrDefaultValue(propertyName: String, defaultValue: Any) = findProperty(propertyName) ?: defaultValue
 
 /**
@@ -40,13 +31,4 @@ fun Project.isSnapshot(): Boolean {
     } else {
         false
     }
-}
-
-/**
- * @return full path to nexus repository.
- */
-fun Project.nexusRepo(): String {
-    val path = if (isSnapshot()) "maven-snapshots" else "maven-releases"
-
-    return "https://nexus.eman.cz/repository/$path"
 }

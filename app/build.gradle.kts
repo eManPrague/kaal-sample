@@ -2,6 +2,7 @@ import org.jetbrains.dokka.gradle.DokkaTask
 import com.android.build.gradle.api.ApplicationVariant
 import com.android.build.gradle.api.BaseVariantOutput
 import com.android.build.gradle.internal.api.BaseVariantOutputImpl
+import org.jetbrains.dokka.gradle.LinkMapping
 
 plugins {
     id("com.android.application")
@@ -11,9 +12,6 @@ plugins {
     id("org.jetbrains.dokka")
     id("com.jaredsburrows.spoon")
 }
-
-apply(plugin = "cz.eman.extension.application")
-
 
 android {
     compileSdkVersion(Android.compileSdk)
@@ -264,6 +262,7 @@ dependencies {
 
     // eMan
     implementation(Dependencies.Libs.kaalPresentation)
+    implementation(Dependencies.Libs.timberKtx)
 
     // Third Party - others
     implementation(Dependencies.Libs.koinAndroid)
@@ -302,14 +301,16 @@ val dokka by tasks.getting(DokkaTask::class) {
     moduleName = "app"
     outputFormat = "html" // html, md, javadoc,
     outputDirectory = "$buildDir/dokka/html"
-/*    processConfigurations = ["compile"]
-    includes = ["../CHANGELOG.md"]
+    //processConfigurations = ["compile"]
     //samples = ["samples/basic.kt", "samples/advanced.kt"]
-    linkMapping {
-        dir = "src/main/kotlin"
-        url = "https://gitlab.eman.cz/TBD/TBD/TBD/tree/dev/TBD/src/main/kotlin"
+    includes = listOf("../README.md")
+    val file = File(project.projectDir,"src/main/kotlin")
+    val relativePath = rootDir.toPath().relativize(file.toPath()).toString()
+    linkMapping(delegateClosureOf<LinkMapping> {
+        dir = file.path
+        url = "https://github.com/eManPrague/kaal-sample/tree/master/$relativePath"
         suffix = "#L"
-    }*/
+    })
     sourceDirs = files("src/main/kotlin")
 }
 

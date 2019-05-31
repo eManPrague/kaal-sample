@@ -22,7 +22,7 @@ private object Versions {
 
     val timber = "4.7.1"
     val timberKtx = "0.1.0"
-    val koin = "2.0.0-beta-1"
+    val koin = "2.0.1"
     val retrofit = "2.5.1-SNAPSHOT"
     val okHttp3LogIntercept = "3.9.1"
 
@@ -44,8 +44,7 @@ private object Versions {
     const val archCore = "2.0.0-rc01"
 
     // eMan Deps
-    val kaal = "1.0.0-alpha2"
-    val emanExtension = "1.1.0"
+    val kaal = "0.1.0"
 }
 
 /* =============================  ANDROID ============================= */
@@ -78,8 +77,6 @@ object GradlePlugins {
     val mavenPublish = "digital.wup:android-maven-publish:${Versions.mavenPublish}"
     val spoon = "com.jaredsburrows:gradle-spoon-plugin:${Versions.spoon}"
     val sonar = "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${Versions.sonar}"
-
-    val emanExtension = "cz.eman.gradle:gradle-extension-plugin:${Versions.emanExtension}"
 }
 
 object Dependencies {
