@@ -32,7 +32,6 @@ allprojects {
     repositories {
         jcenter()
         google()
-        maven(url = "http://dl.bintray.com/emanprague/maven")
 
         // For Spoon snapshot, until 2.0.0 is released
         maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
