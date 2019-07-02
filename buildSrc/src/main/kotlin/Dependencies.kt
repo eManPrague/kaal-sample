@@ -22,7 +22,7 @@ private object Versions {
 
     val timber = "4.7.1"
     val timberKtx = "0.1.0"
-    val koin = "2.0.1"
+    val koin = "2.0.0-beta-1"
     val retrofit = "2.5.1-SNAPSHOT"
     val okHttp3LogIntercept = "3.9.1"
 

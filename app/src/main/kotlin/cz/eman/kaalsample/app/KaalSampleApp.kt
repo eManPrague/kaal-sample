@@ -38,7 +38,6 @@ class KaalSampleApp : Application() {
             initKoin()
             initStetho()
             initMisc()
-            initSentry()
         }
     }
 
@@ -62,11 +61,6 @@ class KaalSampleApp : Application() {
     private fun initMisc() {
         Timber.plant(LogTree())
     }
-
-    private fun initSentry() = Sentry.init(
-            BuildConfig.SENTRY_DSN,
-            AndroidSentryClientFactory(applicationContext)
-    )
 
     private fun initKoin() {
         startKoin {

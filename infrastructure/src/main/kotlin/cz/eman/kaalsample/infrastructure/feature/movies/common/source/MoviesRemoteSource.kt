@@ -3,12 +3,12 @@ package cz.eman.kaalsample.infrastructure.feature.movies.common.source
 import cz.eman.kaal.domain.ApiErrorResult
 import cz.eman.kaal.domain.Result
 import cz.eman.kaal.domain.callSafe
+import cz.eman.kaal.domain.exception.EmptyBodyException
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.domain.feature.movies.common.source.MoviesDataSource
 import cz.eman.kaalsample.infrastructure.feature.movies.common.apiservice.MovieApiService
 import cz.eman.kaalsample.infrastructure.feature.movies.common.mapper.MoviesMapper
 import cz.eman.logger.logError
-import cz.skodaauto.connect.sdk.api.incar.domain.common.exception.EmptyBodyException
 import retrofit2.awaitResponse
 
 /**
