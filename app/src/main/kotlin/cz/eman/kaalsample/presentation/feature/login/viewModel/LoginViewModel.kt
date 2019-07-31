@@ -34,8 +34,6 @@ class LoginViewModel(
 
     var loginUseCase = true
 
-
-
     fun processUser(userName: String, password: String) {
         val user = User(userName, password)
         Timber.v("process user: $userName with usecase login = $loginUseCase")
@@ -43,6 +41,13 @@ class LoginViewModel(
             loginUser(user)
         } else {
             registerUser(user)
+        }
+    }
+
+    fun registerDemoUser(userName: String, password: String) {
+        viewModelScope.launch {
+            val user = User(userName, password)
+            withContext(Dispatchers.IO) { registerUser(RegisterUserUseCase.Params(user)) }
         }
     }
 

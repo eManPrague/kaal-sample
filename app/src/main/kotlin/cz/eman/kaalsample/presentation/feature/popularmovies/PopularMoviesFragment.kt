@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import cz.eman.kaal.domain.ErrorResult
 import cz.eman.kaal.presentation.fragment.BaseFragment
+import cz.eman.kaal.presentation.lifecycle.channels.observeData
 import cz.eman.kaalsample.R
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.infrastructure.device.isLandscape
@@ -21,6 +21,7 @@ import cz.eman.kaalsample.presentation.feature.popularmovies.states.PopularMovie
 import cz.eman.kaalsample.presentation.feature.popularmovies.viewmodel.PopularMoviesViewModel
 import kotlinx.android.synthetic.main.fragment_popular_movies.*
 import kotlinx.android.synthetic.main.view_error_message.view.*
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.viewModel
 import timber.log.Timber
@@ -35,6 +36,8 @@ class PopularMoviesFragment : BaseFragment() {
     private val imageLoader by inject<PicassoImageLoader>()
 
     private lateinit var moviesAdapter: PopularMoviesAdapter
+
+    private var isActive = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -63,17 +66,26 @@ class PopularMoviesFragment : BaseFragment() {
     }
 
     private fun registerEvents() {
-        viewModel.viewState.observe(this, Observer {
-            showLoading(it.showLoading)
-            showError(null)
-            Timber.d("Popular movies state even observed: ${it.javaClass.simpleName}")
-            when (it) {
-                is PopularMoviesViewStates.NotInitialized -> viewModel.loadPopularMovies()
-                is PopularMoviesViewStates.Loading -> Timber.v("Loading movies ...")
-                is PopularMoviesViewStates.MoviesLoaded -> showLoadedMovies(it.movieList)
-                is PopularMoviesViewStates.LoadingError -> showError(it.error)
+        launch {
+            observeData(viewModel.viewState.openSubscription()) {
+                update(it)
             }
-        })
+        }
+    }
+
+    private fun update(state: PopularMoviesViewStates) {
+        if (!isActive) {
+            return
+        }
+        showLoading(state.showLoading)
+        showError(null)
+        Timber.d("Popular movies state even observed: ${state.javaClass.simpleName}")
+        when (state) {
+            is PopularMoviesViewStates.NotInitialized -> viewModel.loadPopularMovies()
+            is PopularMoviesViewStates.Loading -> Timber.v("Loading movies ...")
+            is PopularMoviesViewStates.MoviesLoaded -> showLoadedMovies(state.movieList)
+            is PopularMoviesViewStates.LoadingError -> showError(state.error)
+        }
     }
 
     private fun showLoading(show: Boolean) {
@@ -128,7 +140,13 @@ class PopularMoviesFragment : BaseFragment() {
 
     override fun onStart() {
         super.onStart()
+        isActive = true
         viewModel.checkIfValidData()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        isActive = false
     }
 
     private fun getSpanCount(): Int {

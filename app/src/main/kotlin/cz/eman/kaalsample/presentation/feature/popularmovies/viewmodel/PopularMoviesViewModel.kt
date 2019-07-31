@@ -1,12 +1,12 @@
 package cz.eman.kaalsample.presentation.feature.popularmovies.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import cz.eman.kaal.domain.Result
 import cz.eman.kaal.presentation.viewmodel.BaseViewModel
 import cz.eman.kaalsample.domain.feature.movies.popular.usecase.GetPopularMoviesUseCase
 import cz.eman.kaalsample.presentation.feature.popularmovies.states.PopularMoviesViewStates
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -15,10 +15,10 @@ import timber.log.Timber
  *  @author stefan.toth@eman.cz
  */
 class PopularMoviesViewModel(
-    private val getPopularMovies: GetPopularMoviesUseCase
+        private val getPopularMovies: GetPopularMoviesUseCase
 ) : BaseViewModel() {
 
-    val viewState = MutableLiveData<PopularMoviesViewStates>()
+    val viewState = ConflatedBroadcastChannel<PopularMoviesViewStates>()
 
     init {
         reset()
@@ -26,19 +26,19 @@ class PopularMoviesViewModel(
 
     fun reset() {
         Timber.v("Reset popular movies view model")
-        viewState.value = PopularMoviesViewStates.NotInitialized
+        viewState.offer(PopularMoviesViewStates.NotInitialized)
     }
 
     fun loadPopularMovies() {
-        viewState.value = PopularMoviesViewStates.Loading
+        viewState.offer(PopularMoviesViewStates.Loading)
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) { getPopularMovies(Unit) }
             when (result) {
                 is Result.Success -> {
-                    viewState.value = PopularMoviesViewStates.MoviesLoaded(result.data)
+                    viewState.offer(PopularMoviesViewStates.MoviesLoaded(result.data))
                 }
                 is Result.Error -> {
-                    viewState.value = PopularMoviesViewStates.LoadingError(result.error)
+                    viewState.offer(PopularMoviesViewStates.LoadingError(result.error))
                 }
             }
         }
@@ -51,7 +51,7 @@ class PopularMoviesViewModel(
     }
 
     fun invalidate() {
-        viewState.value = PopularMoviesViewStates.Invalid
+        viewState.offer(PopularMoviesViewStates.Invalid)
     }
 
 }

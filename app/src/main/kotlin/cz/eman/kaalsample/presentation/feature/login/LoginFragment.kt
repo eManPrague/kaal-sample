@@ -1,6 +1,7 @@
 package cz.eman.kaalsample.presentation.feature.login
 
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,8 @@ import timber.log.Timber
 class LoginFragment : BaseFragment() {
 
     private val viewModel by viewModel<LoginViewModel>()
+
+    private var mLastClickTime = 0L
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
@@ -65,13 +68,24 @@ class LoginFragment : BaseFragment() {
         }
 
         loginButton.setOnClickListener {
-            viewModel.processUser(userName = loginUserName.text.toString().trim(),
-                    password = loginPassword.text.toString().trim())
+            if (SystemClock.elapsedRealtime() - mLastClickTime > 1000) {
+                mLastClickTime = SystemClock.elapsedRealtime();
+                viewModel.processUser(userName = loginUserName.text.toString().trim(),
+                        password = loginPassword.text.toString().trim())
+            }
         }
 
-        eman.setOnClickListener {
-            loginUserName.setText("john")
-            loginPassword.setText("travolta")
+        eman.setOnLongClickListener {
+            if (SystemClock.elapsedRealtime() - mLastClickTime > 1000) {
+                val userName = "john"
+                val password = "travolta"
+                loginUserName.setText(userName)
+                loginPassword.setText(password)
+                viewModel.registerDemoUser("john", "travolta")
+                true
+            } else {
+                false
+            }
         }
 
     }
@@ -88,7 +102,9 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun enterTheApp() {
-        findNavController().navigate(R.id.action_splashLogin_to_dashboardActivity)
+        loginUserName.setText("")
+        loginPassword.setText("")
         viewModel.setToIdle()
+        findNavController().navigate(R.id.action_splashLogin_to_dashboardActivity)
     }
 }

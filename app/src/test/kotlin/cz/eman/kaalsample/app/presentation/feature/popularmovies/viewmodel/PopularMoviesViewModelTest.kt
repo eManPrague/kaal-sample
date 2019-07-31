@@ -30,8 +30,6 @@ import kotlinx.coroutines.test.setMain
 //@InternalCoroutinesApi
 class PopularMoviesViewModelTest : StringSpec() {
 
-    private val states = mutableListOf<PopularMoviesViewStates>()
-
     lateinit var viewModel: PopularMoviesViewModel
 
     lateinit var getPopularMoviesUsecase: GetPopularMoviesUseCase
@@ -44,11 +42,6 @@ class PopularMoviesViewModelTest : StringSpec() {
         mockViewModelDependencies()
 
         this.viewModel = PopularMoviesViewModel(getPopularMoviesUsecase)
-
-        this.viewModel.viewState.observeForever { state ->
-            states.add(state)
-        }
-
     }
 
     override fun afterTest(testCase: TestCase, result: TestResult) {

@@ -2,17 +2,18 @@ import org.gradle.api.JavaVersion
 
 private object Versions {
 
-    val supportLib = "1.0.0"
-    val archLifecycle = "2.1.0-alpha03"
-    val navigationComponent = "2.1.0-alpha02"
+    val supportLib = "1.0.2"
+    val archLifecycle = "2.2.0-alpha02"
+    val liveDataKtx = "2.2.0-alpha02"
+    val navigationComponent = "2.1.0-beta02"
     val constraintLayout = "1.1.2"
-    val androidKtx = "1.0.1"
+    val androidKtx = "1.2.0-alpha02"
     const val room = "2.1.0-beta01"
     const val materialDesign = "1.1.0-alpha06"
 
-    val kotlin = "1.3.30"
-    val coroutinesCore = "1.1.1"
-    val coroutinesAndroid = "1.1.1"
+    val kotlin = "1.3.41"
+    val coroutinesCore = "1.3.0-RC"
+    val coroutinesAndroid = "1.3.0-RC"
     val dokka = "0.9.17"
 
     val gradle = "5.2.1"
@@ -22,25 +23,25 @@ private object Versions {
 
     val timber = "4.7.1"
     val timberKtx = "0.1.0"
-    val koin = "2.0.0-beta-1"
+    val koin = "2.0.0-beta-1" // 2.0.1 - bgs: https://github.com/InsertKoinIO/koin/issues/482
     val retrofit = "2.5.1-SNAPSHOT"
     val okHttp3LogIntercept = "3.9.1"
 
     val picasso ="2.5.2"
 
     val stetho = "1.5.0"
-    val leakCanary = "1.6.2"
+    val leakCanary = "1.6.2" // 2.0-alpha-3
     val sonar = "2.6.2"
     const val sentry = "1.7.5"
 
     val junit = "4.12"
-    val kotlinTest = "3.3.2"
-    val coroutinesTest = "1.2.1"
+    val kotlinTest = "3.4.0"
+    val coroutinesTest = "1.3.0-RC"
     val espresso = "3.0.2"
     val spoon = "2.0.0-SNAPSHOT"
     const val uiAutomator = "2.2.0"
     const val supportTest = "1.1.0"
-    const val mockk = "1.9"
+    const val mockk = "1.9.3"
     const val archCore = "2.0.0-rc01"
 
     // eMan Deps
@@ -77,6 +78,7 @@ object GradlePlugins {
     val mavenPublish = "digital.wup:android-maven-publish:${Versions.mavenPublish}"
     val spoon = "com.jaredsburrows:gradle-spoon-plugin:${Versions.spoon}"
     val sonar = "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${Versions.sonar}"
+
 }
 
 object Dependencies {
@@ -85,9 +87,9 @@ object Dependencies {
     object Kotlin {
         val kotlinStbLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
         val coroutinesCore =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesCore}"
+                "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesCore}"
         val coroutinesAndroid =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesAndroid}"
+                "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesAndroid}"
     }
 
     /* =============================  LIBS ================================ */
@@ -96,12 +98,13 @@ object Dependencies {
         val appCompat = "androidx.appcompat:appcompat:${Versions.supportLib}"
         val supportFragment = "androidx.fragment:fragment:${Versions.supportLib}"
         val constraintLayout =
-            "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+                "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
         val lifecycleExtension = "androidx.lifecycle:lifecycle-extensions:${Versions.archLifecycle}"
+        val liveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.liveDataKtx}"
         val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime:${Versions.archLifecycle}"
         val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.archLifecycle}"
         val navigationFragment =
-            "androidx.navigation:navigation-fragment-ktx:${Versions.navigationComponent}"
+                "androidx.navigation:navigation-fragment-ktx:${Versions.navigationComponent}"
         val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigationComponent}"
         val androidKtx = "androidx.core:core-ktx:${Versions.androidKtx}"
         const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
@@ -112,13 +115,13 @@ object Dependencies {
         val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
         val retrofitGsonConv = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
         val okHttp3LogIntercept =
-            "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp3LogIntercept}"
+                "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp3LogIntercept}"
 
         val koinScope =
-            "org.koin:koin-androidx-scope:${Versions.koin}" // Koin Android Scope feature
+                "org.koin:koin-androidx-scope:${Versions.koin}" // Koin Android Scope feature
         val koinAndroid = "org.koin:koin-android:${Versions.koin}"
         val koinViewModel =
-            "org.koin:koin-androidx-viewmodel:${Versions.koin}" // Koin Android ViewModel feature
+                "org.koin:koin-androidx-viewmodel:${Versions.koin}" // Koin Android ViewModel feature
 
         val timber = "com.jakewharton.timber:timber:${Versions.timber}"
         val timberKtx = "cz.eman.logger:timber-ktx:${Versions.timberKtx}"
@@ -137,7 +140,7 @@ object Dependencies {
         val leakCanary = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
         val noLeakCanary = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.leakCanary}"
         val leakCanaryFragment =
-            "com.squareup.leakcanary:leakcanary-support-fragment:${Versions.leakCanary}"
+                "com.squareup.leakcanary:leakcanary-support-fragment:${Versions.leakCanary}"
     }
 
     /* =============================  TEST-LIBS =========================== */
