@@ -2,6 +2,7 @@ package cz.eman.kaalsample.domain.feature.movies.popular.usecase
 
 import cz.eman.kaal.domain.Result
 import cz.eman.kaal.domain.usecases.UseCaseResult
+import cz.eman.kaal.domain.usecases.UseCaseResultNoParams
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.domain.feature.movies.common.repository.MoviesRepository
 
@@ -11,7 +12,7 @@ import cz.eman.kaalsample.domain.feature.movies.common.repository.MoviesReposito
  * @author vsouhrada (vaclav.souhrada@eman.cz)
  * @see[UseCase]
  */
-class GetPopularMoviesUseCase(private val moviesRepository: MoviesRepository) : UseCaseResult<List<Movie>, Unit>() {
+class GetPopularMoviesUseCase(private val moviesRepository: MoviesRepository) : UseCaseResultNoParams<List<Movie>>() {
 
     override suspend fun doWork(params: Unit): Result<List<Movie>> {
         return moviesRepository.getPopularMovies()

@@ -33,7 +33,7 @@ class KaalSampleApp : Application() {
         super.onCreate()
 
         if (!LeakCanary.isInAnalyzerProcess(this)) {
-            LeakCanary.install(this)
+            //LeakCanary.install(this)
 
             initKoin()
             initStetho()

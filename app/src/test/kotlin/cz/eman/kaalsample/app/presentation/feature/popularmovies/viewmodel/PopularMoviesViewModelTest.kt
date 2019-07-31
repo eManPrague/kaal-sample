@@ -81,7 +81,7 @@ class PopularMoviesViewModelTest : StringSpec() {
 
         "state should be Loading after call the loading"{
             runBlockingTest {
-                coEvery { getPopularMoviesUsecase(any()) } returns Result.Success(listOf())
+                coEvery { getPopularMoviesUsecase() } returns Result.Success(listOf())
                 viewModel.loadPopularMovies()
                 viewModel.viewState.value shouldBe PopularMoviesViewStates.Loading
             }
@@ -89,16 +89,16 @@ class PopularMoviesViewModelTest : StringSpec() {
 
         "get popular movies use case should called when loading"{
             runBlockingTest {
-                coEvery { getPopularMoviesUsecase(Unit) } returns Result.Success(listOf())
+                coEvery { getPopularMoviesUsecase() } returns Result.Success(listOf())
                 viewModel.loadPopularMovies()
                 delay(BE_SURE_TIME)
-                coVerify { getPopularMoviesUsecase(Unit) }
+                coVerify { getPopularMoviesUsecase() }
             }
         }
 
         "state should be Movies Loaded after the loading in case of success"{
             runBlockingTest {
-                coEvery { getPopularMoviesUsecase(any()) } returns Result.Success(listOf())
+                coEvery { getPopularMoviesUsecase() } returns Result.Success(listOf())
                 runBlocking {
                     viewModel.loadPopularMovies()
                     delay(BE_SURE_TIME)
@@ -111,7 +111,7 @@ class PopularMoviesViewModelTest : StringSpec() {
 
         "state should be Error after fail the loading"{
             runBlockingTest {
-                coEvery { getPopularMoviesUsecase(any()) } returns Result.Error(ErrorResult())
+                coEvery { getPopularMoviesUsecase() } returns Result.Error(ErrorResult())
                 runBlocking {
                     viewModel.loadPopularMovies()
                     delay(BE_SURE_TIME)

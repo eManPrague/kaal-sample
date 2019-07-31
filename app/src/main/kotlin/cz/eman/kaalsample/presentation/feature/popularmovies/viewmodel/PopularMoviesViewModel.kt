@@ -32,7 +32,7 @@ class PopularMoviesViewModel(
     fun loadPopularMovies() {
         viewState.offer(PopularMoviesViewStates.Loading)
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) { getPopularMovies(Unit) }
+            val result = withContext(Dispatchers.IO) { getPopularMovies() }
             when (result) {
                 is Result.Success -> {
                     viewState.offer(PopularMoviesViewStates.MoviesLoaded(result.data))
