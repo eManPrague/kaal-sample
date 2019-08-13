@@ -1,10 +1,6 @@
 package cz.eman.kaalsample.infrastructure.core.di
 
-import cz.eman.kaalsample.domain.feature.movies.common.MoviesCache
-import cz.eman.kaalsample.domain.feature.movies.favorite.source.FavoritesMovieDataSource
-import cz.eman.kaalsample.domain.feature.usermanagement.source.UserDataSource
 import cz.eman.kaalsample.infrastructure.core.room.MovieDatabase
-import cz.eman.kaalsample.domain.feature.movies.common.source.MoviesDataSource
 import cz.eman.kaalsample.infrastructure.core.di.DiInfrastructure
 import cz.eman.kaalsample.infrastructure.feature.movies.common.apiservice.MOVIE_DB_HOST
 import cz.eman.kaalsample.infrastructure.feature.movies.common.apiservice.MovieApiService
@@ -14,6 +10,10 @@ import cz.eman.kaalsample.infrastructure.feature.movies.common.source.MoviesMemo
 import cz.eman.kaalsample.infrastructure.feature.movies.common.source.MoviesRemoteSource
 import cz.eman.kaalsample.infrastructure.feature.movies.favorite.source.FavoritesMovieLocalDataSource
 import cz.eman.kaalsample.infrastructure.feature.usermanagement.source.UserLocalDataSource
+import features.movies.common.MoviesCache
+import features.movies.common.source.MoviesDataSource
+import features.movies.favorite.source.FavoritesMovieDataSource
+import features.usermanagement.source.UserDataSource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

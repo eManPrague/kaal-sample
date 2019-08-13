@@ -1,13 +1,13 @@
 package cz.eman.kaalsample.infrastructure.feature.usermanagement.source
 
 import cz.eman.kaal.domain.Result
-import cz.eman.kaalsample.domain.feature.usermanagement.model.User
-import cz.eman.kaalsample.domain.feature.usermanagement.source.UserDataSource
 import cz.eman.kaalsample.infrastructure.core.ErrorCode
 import cz.eman.kaalsample.infrastructure.core.ErrorCodeResult
 import cz.eman.kaalsample.infrastructure.feature.usermanagement.db.dao.UserDao
 import cz.eman.kaalsample.infrastructure.feature.usermanagement.db.entity.UserEntity
 import cz.eman.kaalsample.infrastructure.feature.usermanagement.mapper.UserMapper
+import features.usermanagement.model.User
+import features.usermanagement.source.UserDataSource
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)

@@ -1,7 +1,7 @@
 package cz.eman.kaalsample.infrastructure.feature.usermanagement.mapper
 
-import cz.eman.kaalsample.domain.feature.usermanagement.model.User
 import cz.eman.kaalsample.infrastructure.feature.usermanagement.db.entity.UserEntity
+import features.usermanagement.model.User
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)

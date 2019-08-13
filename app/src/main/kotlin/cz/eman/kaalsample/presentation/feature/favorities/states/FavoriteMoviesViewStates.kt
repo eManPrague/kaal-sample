@@ -1,7 +1,7 @@
 package cz.eman.kaalsample.presentation.feature.favorities.states
 
 import cz.eman.kaal.domain.ErrorResult
-import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
+import features.movies.common.model.Movie
 
 /**
  *  @author stefan.toth@eman.cz

@@ -1,11 +1,11 @@
 package cz.eman.kaalsample.infrastructure.feature.movies.common.source
 
 import cz.eman.kaal.domain.Result
-import cz.eman.kaalsample.domain.feature.movies.common.MoviesCache
-import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
-import cz.eman.kaalsample.domain.feature.movies.common.source.MoviesDataSource
 import cz.eman.kaalsample.infrastructure.core.ErrorCode
 import cz.eman.kaalsample.infrastructure.core.ErrorCodeResult
+import features.movies.common.MoviesCache
+import features.movies.common.model.Movie
+import features.movies.common.source.MoviesDataSource
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)

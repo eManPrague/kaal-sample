@@ -1,0 +1,57 @@
+plugins {
+    id 'kotlin-multiplatform'
+}
+repositories {
+    mavenCentral()
+    jcenter()
+}
+group 'com.example'
+version '0.0.1'
+
+apply plugin: 'maven-publish'
+
+kotlin {
+    jvm()
+    // This is for iPhone emulator
+    // Switch here to iosArm64 (or iosArm32) to build library for iPhone device
+    iosX64("ios") {
+//        compilations.main.outputKinds("framework")
+    }
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation kotlin('stdlib-common')
+                api("cz.eman.kaal:kaal-domain:0.1.0")
+            }
+        }
+        commonTest {
+            dependencies {
+                implementation kotlin('test-common')
+                implementation kotlin('test-annotations-common')
+            }
+        }
+        jvmMain {
+            dependencies {
+                api("cz.eman.kaal:kaal-domain:0.1.0")
+                implementation kotlin('stdlib')
+            }
+        }
+        jvmTest {
+            dependencies {
+                implementation kotlin('test')
+                implementation kotlin('test-junit')
+            }
+        }
+        iosMain {
+            dependencies {
+                implementation "cz.eman.kaal:kaal-domain:0.1.0"
+            }
+        }
+        iosTest {
+        }
+    }
+}
+
+configurations {
+    compileClasspath
+}

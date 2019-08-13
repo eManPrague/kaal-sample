@@ -1,7 +1,7 @@
 package cz.eman.kaalsample.infrastructure.feature.movies.common.mapper
 
-import cz.eman.kaalsample.domain.feature.movies.common.model.*
 import cz.eman.kaalsample.infrastructure.feature.movies.common.model.*
+import features.movies.common.model.*
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)

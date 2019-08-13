@@ -1,11 +1,11 @@
 package cz.eman.kaalsample.data.feature.movies.common.repository
 
 import cz.eman.kaal.domain.Result
-import cz.eman.kaalsample.domain.feature.movies.common.MoviesCache
-import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
-import cz.eman.kaalsample.domain.feature.movies.common.repository.MoviesRepository
-import cz.eman.kaalsample.domain.feature.movies.common.source.MoviesDataSource
-import cz.eman.kaalsample.domain.feature.movies.favorite.source.FavoritesMovieDataSource
+import features.movies.common.MoviesCache
+import features.movies.common.model.Movie
+import features.movies.common.repository.MoviesRepository
+import features.movies.common.source.MoviesDataSource
+import features.movies.favorite.source.FavoritesMovieDataSource
 
 /**
  *

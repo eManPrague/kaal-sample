@@ -4,12 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import cz.eman.kaal.domain.Result
 import cz.eman.kaal.presentation.viewmodel.BaseViewModel
-import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
-import cz.eman.kaalsample.domain.feature.movies.detail.usecase.GetMovieByIdUseCase
-import cz.eman.kaalsample.domain.feature.movies.favorite.usecase.ChangeFavoriteStatusUseCase
-import cz.eman.kaalsample.domain.feature.movies.favorite.usecase.CheckMovieFavoriteStatusUseCase
-import cz.eman.kaalsample.domain.feature.movies.favorite.usecase.Params
 import cz.eman.kaalsample.presentation.feature.detail.states.DetailViewStates
+import features.movies.common.model.Movie
+import features.movies.detail.GetMovieByIdUseCase
+import features.movies.favorite.usecase.ChangeFavoriteStatusUseCase
+import features.movies.favorite.usecase.CheckMovieFavoriteStatusUseCase
+import features.movies.favorite.usecase.Params
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

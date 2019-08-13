@@ -1,9 +1,9 @@
 package cz.eman.kaalsample.presentation.feature.detail.di
 
-import cz.eman.kaalsample.domain.feature.movies.detail.usecase.GetMovieByIdUseCase
-import cz.eman.kaalsample.domain.feature.movies.favorite.usecase.ChangeFavoriteStatusUseCase
-import cz.eman.kaalsample.domain.feature.movies.favorite.usecase.CheckMovieFavoriteStatusUseCase
 import cz.eman.kaalsample.presentation.feature.detail.viewmodel.DetailViewModel
+import features.movies.detail.GetMovieByIdUseCase
+import features.movies.favorite.usecase.ChangeFavoriteStatusUseCase
+import features.movies.favorite.usecase.CheckMovieFavoriteStatusUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

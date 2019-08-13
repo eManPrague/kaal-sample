@@ -1,8 +1,9 @@
 package cz.eman.kaalsample.data.feature.usermanagement.repository
 
-import cz.eman.kaalsample.domain.feature.usermanagement.model.User
-import cz.eman.kaalsample.domain.feature.usermanagement.repository.UserRepository
-import cz.eman.kaalsample.domain.feature.usermanagement.source.UserDataSource
+import features.usermanagement.model.User
+import features.usermanagement.repository.UserRepository
+import features.usermanagement.source.UserDataSource
+
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)

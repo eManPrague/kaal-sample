@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import cz.eman.kaal.domain.ErrorResult
 import cz.eman.kaal.presentation.fragment.BaseFragment
 import cz.eman.kaalsample.R
-import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.presentation.feature.const.Const
 import cz.eman.kaalsample.presentation.feature.favorities.adapter.FavoriteMoviesAdapter
 import cz.eman.kaalsample.presentation.feature.favorities.states.FavoriteMoviesViewStates
 import cz.eman.kaalsample.presentation.feature.favorities.viewmodel.FavoritesViewModel
+import features.movies.common.model.Movie
 import kotlinx.android.synthetic.main.fragment_my_favorite_movies.*
 import org.koin.androidx.viewmodel.ext.viewModel
 import timber.log.Timber

@@ -1,7 +1,7 @@
 package cz.eman.kaalsample.infrastructure.feature.movies.favorite.mapper
 
-import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.infrastructure.feature.movies.favorite.db.entity.FavoriteMovieEntity
+import features.movies.common.model.Movie
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)

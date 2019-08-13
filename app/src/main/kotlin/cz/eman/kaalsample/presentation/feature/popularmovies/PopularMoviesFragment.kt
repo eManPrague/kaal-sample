@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import cz.eman.kaal.domain.ErrorResult
 import cz.eman.kaal.presentation.fragment.BaseFragment
 import cz.eman.kaalsample.R
-import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.infrastructure.device.isLandscape
 import cz.eman.kaalsample.infrastructure.file.image.PicassoImageLoader
 import cz.eman.kaalsample.presentation.feature.const.Const.SELECTED_MOVIE_ID
 import cz.eman.kaalsample.presentation.feature.popularmovies.adapter.PopularMoviesAdapter
 import cz.eman.kaalsample.presentation.feature.popularmovies.states.PopularMoviesViewStates
 import cz.eman.kaalsample.presentation.feature.popularmovies.viewmodel.PopularMoviesViewModel
+import features.movies.common.model.Movie
 import kotlinx.android.synthetic.main.fragment_popular_movies.*
 import kotlinx.android.synthetic.main.view_error_message.view.*
 import org.koin.android.ext.android.inject

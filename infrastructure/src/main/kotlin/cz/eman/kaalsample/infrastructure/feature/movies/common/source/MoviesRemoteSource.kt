@@ -4,11 +4,11 @@ import cz.eman.kaal.domain.ApiErrorResult
 import cz.eman.kaal.domain.Result
 import cz.eman.kaal.domain.callSafe
 import cz.eman.kaal.domain.exception.EmptyBodyException
-import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
-import cz.eman.kaalsample.domain.feature.movies.common.source.MoviesDataSource
 import cz.eman.kaalsample.infrastructure.feature.movies.common.apiservice.MovieApiService
 import cz.eman.kaalsample.infrastructure.feature.movies.common.mapper.MoviesMapper
 import cz.eman.logger.logError
+import features.movies.common.model.Movie
+import features.movies.common.source.MoviesDataSource
 import retrofit2.awaitResponse
 
 /**

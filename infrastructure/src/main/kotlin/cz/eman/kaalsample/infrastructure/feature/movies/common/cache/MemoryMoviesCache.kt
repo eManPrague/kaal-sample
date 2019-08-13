@@ -1,7 +1,8 @@
 package cz.eman.kaalsample.infrastructure.feature.movies.common.cache
 
-import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
-import cz.eman.kaalsample.domain.feature.movies.common.MoviesCache
+import features.movies.common.MoviesCache
+import features.movies.common.model.Movie
+
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)

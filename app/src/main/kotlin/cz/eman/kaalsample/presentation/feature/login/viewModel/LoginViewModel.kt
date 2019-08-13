@@ -4,10 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import cz.eman.kaal.domain.Result
 import cz.eman.kaal.presentation.viewmodel.BaseViewModel
-import cz.eman.kaalsample.domain.feature.usermanagement.model.User
-import cz.eman.kaalsample.domain.feature.usermanagement.usecase.AuthorizeUserUseCase
-import cz.eman.kaalsample.domain.feature.usermanagement.usecase.RegisterUserUseCase
 import cz.eman.kaalsample.presentation.feature.login.states.LoginStates
+import features.usermanagement.model.User
+import features.usermanagement.usecases.AuthorizeUserUseCase
+import features.usermanagement.usecases.RegisterUserUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

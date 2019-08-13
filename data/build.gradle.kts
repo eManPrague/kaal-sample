@@ -13,7 +13,8 @@ plugins {
 
 
 dependencies {
-    implementation(project(":domain"))
+//    implementation(project(":domain"))
+    implementation(project(":shared"))
 
     // Kotlin
     implementation(Dependencies.Kotlin.kotlinStbLib)

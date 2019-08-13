@@ -241,7 +241,8 @@ spoon {
 
 dependencies {
     implementation(project(":infrastructure"))
-    implementation(project(":domain"))
+//    implementation(project(":domain"))
+    implementation(project(":shared"))
     implementation(project(":data"))
 
     // Kotlin

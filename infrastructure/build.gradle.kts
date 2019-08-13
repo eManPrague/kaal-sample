@@ -65,7 +65,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
+//    implementation(project(":domain"))
+    implementation(project(":shared"))
 
     implementation(Dependencies.Kotlin.kotlinStbLib)
     implementation(Dependencies.Kotlin.coroutinesCore)

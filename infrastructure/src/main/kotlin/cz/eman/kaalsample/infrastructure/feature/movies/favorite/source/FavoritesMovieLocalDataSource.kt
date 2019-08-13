@@ -1,15 +1,15 @@
 package cz.eman.kaalsample.infrastructure.feature.movies.favorite.source
 
-import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
-import cz.eman.kaalsample.domain.feature.movies.favorite.source.FavoritesMovieDataSource
 import cz.eman.kaalsample.infrastructure.feature.movies.favorite.db.dao.FavoriteMovieDao
 import cz.eman.kaalsample.infrastructure.feature.movies.favorite.mapper.FavoriteMovieMapper
+import features.movies.common.model.Movie
+import features.movies.favorite.source.FavoritesMovieDataSource
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)
  */
 class FavoritesMovieLocalDataSource(private val favoriteMovieDao: FavoriteMovieDao) :
-    FavoritesMovieDataSource {
+        FavoritesMovieDataSource {
 
     override suspend fun save(movie: Movie) {
         favoriteMovieDao.insert(FavoriteMovieMapper.mapToDbEntity(movie))

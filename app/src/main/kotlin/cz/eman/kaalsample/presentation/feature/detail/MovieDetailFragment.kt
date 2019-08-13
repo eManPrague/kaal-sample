@@ -8,11 +8,11 @@ import androidx.lifecycle.Observer
 import cz.eman.kaal.domain.ErrorResult
 import cz.eman.kaal.presentation.fragment.BaseFragment
 import cz.eman.kaalsample.R
-import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.infrastructure.file.image.PicassoImageLoader
 import cz.eman.kaalsample.presentation.feature.const.Const
 import cz.eman.kaalsample.presentation.feature.detail.states.DetailViewStates
 import cz.eman.kaalsample.presentation.feature.detail.viewmodel.DetailViewModel
+import features.movies.common.model.Movie
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import kotlinx.android.synthetic.main.view_error_message.view.*
 import kotlinx.android.synthetic.main.view_movie_detail.view.*

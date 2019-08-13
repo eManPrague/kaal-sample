@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cz.eman.kaalsample.R
-import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.infrastructure.file.image.ImageLoader
+import features.movies.common.model.Movie
 import kotlinx.android.synthetic.main.view_popular_movie_item.view.*
 
 /**
