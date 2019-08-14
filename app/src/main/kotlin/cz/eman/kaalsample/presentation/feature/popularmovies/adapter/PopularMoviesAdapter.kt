@@ -29,7 +29,7 @@ class PopularMoviesAdapter(private val imageLoader: ImageLoader,
 
     override fun getItemCount() = movies.size
 
-    public fun addMovies(movies: List<Movie>) {
+    fun addMovies(movies: List<Movie>) {
         this.movies = movies.toMutableList()
         notifyDataSetChanged()
     }
