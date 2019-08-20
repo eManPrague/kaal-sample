@@ -89,6 +89,8 @@ dependencies {
     testImplementation(Dependencies.TestLibs.mockkInstrument)
     testImplementation(Dependencies.TestLibs.testRunner)
     testImplementation(Dependencies.TestLibs.archCoreTest)
+    testImplementation(Dependencies.TestLibs.archUnit)
+    testImplementation(Dependencies.TestLibs.slf4j)
 }
 
 val dokka by tasks.getting(DokkaTask::class) {

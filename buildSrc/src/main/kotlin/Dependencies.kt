@@ -42,6 +42,8 @@ private object Versions {
     const val supportTest = "1.1.0"
     const val mockk = "1.9"
     const val archCore = "2.0.0-rc01"
+    val archUnit = "0.10.2"
+    val slf4j = "1.7.26"
 
     // eMan Deps
     val kaal = "0.1.0"
@@ -154,5 +156,7 @@ object Dependencies {
         const val testRunner = "androidx.test:runner:${Versions.supportTest}"
         const val testRules = "androidx.test:rules:${Versions.supportTest}"
         const val archCoreTest = "androidx.arch.core:core-testing:${Versions.archCore}"
+        val archUnit = "com.tngtech.archunit:archunit-junit4:${Versions.archUnit}"
+        val slf4j = "org.slf4j:slf4j-simple:${Versions.slf4j}"
     }
 }
