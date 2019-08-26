@@ -1,9 +1,9 @@
 package cz.eman.kaalsample.infrastructure.feature.movies.common.source
 
-import cz.eman.kaal.domain.ApiErrorResult
 import cz.eman.kaal.domain.Result
 import cz.eman.kaal.domain.callSafe
 import cz.eman.kaal.domain.exception.EmptyBodyException
+import cz.eman.kaalsample.domain.ApiErrorResult
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.domain.feature.movies.common.source.MoviesDataSource
 import cz.eman.kaalsample.infrastructure.feature.movies.common.apiservice.MovieApiService
@@ -36,9 +36,9 @@ class MoviesRemoteSource(private val movieApiService: MovieApiService) : MoviesD
 
         return if (response.isSuccessful) {
             val body = response.body()
-            body?.let {
+            if (body != null) {
                 Result.Success(data = MoviesMapper.mapWrapperToMovie(body))
-            } ?: run {
+            } else {
                 Result.Error(
                         ApiErrorResult(
                                 code = response.code(),
@@ -50,6 +50,7 @@ class MoviesRemoteSource(private val movieApiService: MovieApiService) : MoviesD
         } else {
             val errorResult =
                     ApiErrorResult(code = response.code(), errorMessage = response.message())
+
             logError { "Cannot fetch popular movies[$errorResult]" }
             Result.Error(errorResult)
         }
@@ -60,9 +61,9 @@ class MoviesRemoteSource(private val movieApiService: MovieApiService) : MoviesD
 
         return if (response.isSuccessful) {
             val body = response.body()
-            body?.let {
+            if (body != null) {
                 Result.Success(data = MoviesMapper.mapWrapperToMovie(body))
-            } ?: run {
+            } else {
                 Result.Error(
                         ApiErrorResult(
                                 code = response.code(),
@@ -86,9 +87,9 @@ class MoviesRemoteSource(private val movieApiService: MovieApiService) : MoviesD
 
         return if (response.isSuccessful) {
             val body = response.body()
-            body?.let {
+            if (body != null) {
                 Result.Success(data = MoviesMapper.mapToMovieDetails(body))
-            } ?: run {
+            } else {
                 Result.Error(
                         ApiErrorResult(
                                 code = response.code(),

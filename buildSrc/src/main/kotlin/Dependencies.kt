@@ -10,7 +10,7 @@ private object Versions {
     const val room = "2.1.0-beta01"
     const val materialDesign = "1.1.0-alpha06"
 
-    val kotlin = "1.3.30"
+    val kotlin = "1.3.50"
     val coroutinesCore = "1.1.1"
     val coroutinesAndroid = "1.1.1"
     val dokka = "0.9.17"
@@ -23,7 +23,7 @@ private object Versions {
     val timber = "4.7.1"
     val timberKtx = "0.1.0"
     val koin = "2.0.0-beta-1"
-    val retrofit = "2.5.1-SNAPSHOT"
+    val retrofit = "2.6.0"
     val okHttp3LogIntercept = "3.9.1"
 
     val picasso ="2.5.2"
@@ -46,7 +46,7 @@ private object Versions {
     val slf4j = "1.7.26"
 
     // eMan Deps
-    val kaal = "0.1.0"
+    val kaal = "0.2.0"
 }
 
 /* =============================  ANDROID ============================= */

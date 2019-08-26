@@ -16,28 +16,28 @@ class UserLocalDataSource(private val userDao: UserDao) : UserDataSource {
 
     override suspend fun authorizeUser(user: User): Result<User> {
         val entity = userDao.findUser(username = user.username, password = user.password)
-        return entity?.let {
+        return if (entity != null) {
             Result.Success(data = UserMapper.mapUserEntityToUser(entity))
-        } ?: run {
+        } else {
             Result.Error(
-                    ErrorCodeResult(
-                            ErrorCode.INVALID_USER_CREDENTIALS,
-                            message = "Invalid username or password"
-                    )
+                ErrorCodeResult(
+                    ErrorCode.INVALID_USER_CREDENTIALS,
+                    message = "Invalid username or password"
+                )
             )
         }
     }
 
     override suspend fun registerUser(user: User): Result<User> {
         val entity = userDao.getUserByName(user.username)
-        return entity?.let {
+        return if (entity != null) {
             Result.Error(
-                    ErrorCodeResult(
-                            ErrorCode.USER_ALREADY_EXIST,
-                            message = "User already exist"
-                    )
+                ErrorCodeResult(
+                    ErrorCode.USER_ALREADY_EXIST,
+                    message = "User already exist"
+                )
             )
-        } ?: run {
+        } else {
             val userEntity = UserEntity(user.username, user.password)
             userDao.insert(userEntity)
             Result.Success(data = UserMapper.mapUserEntityToUser(userEntity))

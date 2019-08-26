@@ -42,7 +42,9 @@ class MoviesMemoryDataSource(private val moviesCache: MoviesCache) : MoviesDataS
 
     override suspend fun getMovieById(movieId: Int): Result<Movie> {
         val movie = moviesCache.getMovieById(movieId)
-        return movie?.let { Result.Success(it) } ?: run {
+        return if (movie != null) {
+            Result.Success(movie)
+        } else {
             Result.Error(
                 ErrorCodeResult(
                     code = ErrorCode.NO_MOVIES_IN_CACHE,
