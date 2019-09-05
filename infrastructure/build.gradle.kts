@@ -60,7 +60,7 @@ android {
     }
 
     lintOptions {
-        setLintConfig(File("lint.xml"))
+        setLintConfig(File("$rootDir/lint.xml"))
     }
 }
 
