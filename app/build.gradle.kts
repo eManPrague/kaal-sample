@@ -295,6 +295,7 @@ dependencies {
     debugImplementation(Dependencies.Libs.leakCanaryFragment)
     "uatImplementation"(Dependencies.Libs.noLeakCanary)
     releaseImplementation(Dependencies.Libs.noLeakCanary)
+    debugImplementation(Dependencies.Libs.debugDb)
 }
 
 val dokka by tasks.getting(DokkaTask::class) {

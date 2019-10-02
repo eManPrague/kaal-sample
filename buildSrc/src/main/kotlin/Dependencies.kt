@@ -32,6 +32,7 @@ private object Versions {
     val leakCanary = "1.6.2"
     val sonar = "2.6.2"
     const val sentry = "1.7.5"
+    val debugDb = "1.0.6"
 
     val junit = "4.12"
     val kotlinTest = "3.3.2"
@@ -140,6 +141,7 @@ object Dependencies {
         val noLeakCanary = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.leakCanary}"
         val leakCanaryFragment =
             "com.squareup.leakcanary:leakcanary-support-fragment:${Versions.leakCanary}"
+        val debugDb = "com.amitshekhar.android:debug-db:${Versions.debugDb}"
     }
 
     /* =============================  TEST-LIBS =========================== */
