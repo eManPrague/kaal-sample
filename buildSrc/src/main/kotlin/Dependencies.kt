@@ -11,8 +11,8 @@ private object Versions {
     const val materialDesign = "1.1.0-alpha06"
 
     val kotlin = "1.3.50"
-    val coroutinesCore = "1.1.1"
-    val coroutinesAndroid = "1.1.1"
+    val coroutinesCore = "1.3.2"
+    val coroutinesAndroid = "1.3.2"
     val dokka = "0.9.17"
 
     val gradle = "5.2.1"
@@ -46,7 +46,7 @@ private object Versions {
     val slf4j = "1.7.26"
 
     // eMan Deps
-    val kaal = "0.2.0"
+    val kaal = "0.3.0"
 }
 
 /* =============================  ANDROID ============================= */

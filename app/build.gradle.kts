@@ -23,7 +23,7 @@ android {
         targetSdkVersion(Android.targetSdk)
 
         versionCode = getGitCommits()
-        versionName = findPropertyOrNull("versionName") ?: Android.versionName
+        versionName = findPropertyOrNull( "versionName") ?: Android.versionName
 
         testInstrumentationRunner = Android.testInstrumentRunner
 
