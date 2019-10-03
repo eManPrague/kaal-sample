@@ -22,9 +22,6 @@ buildscript {
 
         // Spoon Gradle Plugin
         classpath(GradlePlugins.spoon)
-
-        // SonarQube Gradle Plugin
-        classpath(GradlePlugins.sonar)
     }
 }
 

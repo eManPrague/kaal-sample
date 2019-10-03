@@ -16,6 +16,6 @@ interface UserDao : BaseDao<UserEntity> {
     suspend fun findUser(username: String, password: String): UserEntity?
 
     @Query("SELECT * FROM user WHERE username = :username")
-    suspend fun getUserByName(username: String): UserEntity?
+    suspend fun selectUserByUsername(username: String): UserEntity?
 
 }

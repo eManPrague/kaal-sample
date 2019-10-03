@@ -7,7 +7,7 @@ private object Versions {
     val navigationComponent = "2.1.0-alpha02"
     val constraintLayout = "1.1.2"
     val androidKtx = "1.0.1"
-    const val room = "2.1.0-beta01"
+    const val room = "2.2.0-rc01"
     const val materialDesign = "1.1.0-alpha06"
 
     val kotlin = "1.3.50"
@@ -30,7 +30,6 @@ private object Versions {
 
     val stetho = "1.5.0"
     val leakCanary = "1.6.2"
-    val sonar = "2.6.2"
     const val sentry = "1.7.5"
 
     val junit = "4.12"
@@ -78,7 +77,6 @@ object GradlePlugins {
     val dokka = "org.jetbrains.dokka:dokka-gradle-plugin:${Versions.dokka}"
     val mavenPublish = "digital.wup:android-maven-publish:${Versions.mavenPublish}"
     val spoon = "com.jaredsburrows:gradle-spoon-plugin:${Versions.spoon}"
-    val sonar = "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${Versions.sonar}"
 }
 
 object Dependencies {

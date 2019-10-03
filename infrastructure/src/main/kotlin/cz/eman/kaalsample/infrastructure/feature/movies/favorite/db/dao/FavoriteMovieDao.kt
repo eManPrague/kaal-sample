@@ -21,7 +21,7 @@ interface FavoriteMovieDao : BaseDao<FavoriteMovieEntity> {
     suspend fun search(query: String): List<FavoriteMovieEntity>
 
     @Query("DELETE FROM favorite_movie")
-    suspend fun clear()
+    suspend fun deleteAllFavoriteMovies()
 
     @Query("SELECT COUNT(id) FROM favorite_movie")
     fun loadCountOfMovies(): Int

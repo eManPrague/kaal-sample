@@ -29,7 +29,7 @@ class UserLocalDataSource(private val userDao: UserDao) : UserDataSource {
     }
 
     override suspend fun registerUser(user: User): Result<User> {
-        val entity = userDao.getUserByName(user.username)
+        val entity = userDao.selectUserByUsername(user.username)
         return if (entity != null) {
             Result.Error(
                 ErrorCodeResult(

@@ -42,6 +42,6 @@ class FavoritesMovieLocalDataSource(private val favoriteMovieDao: FavoriteMovieD
 
     override suspend fun isEmpty() = favoriteMovieDao.loadCountOfMovies() <= 0
 
-    override suspend fun clear() = favoriteMovieDao.clear()
+    override suspend fun clear() = favoriteMovieDao.deleteAllFavoriteMovies()
 
 }

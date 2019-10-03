@@ -8,17 +8,18 @@ import cz.eman.kaalsample.domain.feature.usermanagement.model.User
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.AuthorizeUserUseCase
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.RegisterUserUseCase
 import cz.eman.kaalsample.presentation.feature.login.states.LoginStates
+import cz.eman.logger.logDebug
+import cz.eman.logger.logVerbose
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 
 /**
  *  @author stefan.toth@eman.cz
  */
 class LoginViewModel(
-        private val authoriseUser: AuthorizeUserUseCase,
-        private val registerUser: RegisterUserUseCase
+    private val authoriseUser: AuthorizeUserUseCase,
+    private val registerUser: RegisterUserUseCase
 ) : BaseViewModel() {
 
     // fixme - use SingleLiveData instead of MutableLiveData
@@ -35,10 +36,9 @@ class LoginViewModel(
     var loginUseCase = true
 
 
-
     fun processUser(userName: String, password: String) {
         val user = User(userName, password)
-        Timber.v("process user: $userName with usecase login = $loginUseCase")
+        logVerbose("process user: $userName with usecase login = $loginUseCase")
         if (loginUseCase) {
             loginUser(user)
         } else {
@@ -48,8 +48,9 @@ class LoginViewModel(
 
     private fun loginUser(user: User) {
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) { authoriseUser(AuthorizeUserUseCase.Params(user)) }
-            Timber.d(" authorisation result: $result")
+            val result =
+                withContext(Dispatchers.IO) { authoriseUser(AuthorizeUserUseCase.Params(user)) }
+            logDebug(" authorisation result: $result")
             when (result) {
                 is Result.Success -> loginStates.postValue(LoginStates.LoginDone)
                 is Result.Error -> loginStates.postValue(LoginStates.ErrorResult(result.error.message))
@@ -59,8 +60,9 @@ class LoginViewModel(
 
     private fun registerUser(user: User) {
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) { registerUser(RegisterUserUseCase.Params(user)) }
-            Timber.d(" registration result: $result")
+            val result =
+                withContext(Dispatchers.IO) { registerUser(RegisterUserUseCase.Params(user)) }
+            logDebug(" registration result: $result")
             when (result) {
                 is Result.Success -> loginStates.postValue(LoginStates.RegistrationDone)
                 is Result.Error -> loginStates.postValue(LoginStates.ErrorResult(result.error.message))

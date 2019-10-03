@@ -72,7 +72,6 @@ object GradlePlugins {
     val dokka = "org.jetbrains.dokka:dokka-gradle-plugin:${Versions.dokka}"
     val mavenPublish = "digital.wup:android-maven-publish:${Versions.mavenPublish}"
     val spoon = "com.jaredsburrows:gradle-spoon-plugin:${Versions.spoon}"
-    val sonar = "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${Versions.sonar}"
 
     val emanExtension = "cz.eman.gradle:gradle-extension-plugin:${Versions.emanExtension}"
  }
@@ -102,9 +101,6 @@ buildscript {
 
         // Spoon Gradle Plugin
         classpath(GradlePlugins.spoon)
-
-        // SonarQube Gradle Plugin
-        classpath(GradlePlugins.sonar)
     }
 }
 
