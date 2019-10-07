@@ -251,6 +251,7 @@ dependencies {
 
     // Google Android Libraries
     implementation(Dependencies.Libs.appCompat)
+    implementation(Dependencies.Libs.androidxActivity)
     implementation(Dependencies.Libs.constraintLayout)
     implementation(Dependencies.Libs.androidKtx)
     implementation(Dependencies.Libs.navigationFragment)

@@ -1,6 +1,6 @@
 package cz.eman.kaalsample.domain.feature.usermanagement.source
 
-import cz.eman.kaal.domain.Result
+import cz.eman.kaal.domain.result.Result
 import cz.eman.kaalsample.domain.feature.usermanagement.model.User
 
 /**

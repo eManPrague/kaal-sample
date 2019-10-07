@@ -9,7 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import cz.eman.kaal.domain.ErrorResult
+import cz.eman.kaal.domain.result.ErrorResult
 import cz.eman.kaal.presentation.fragment.BaseFragment
 import cz.eman.kaalsample.R
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie

@@ -2,41 +2,42 @@ import org.gradle.api.JavaVersion
 
 private object Versions {
 
-    val supportLib = "1.0.0"
-    val archLifecycle = "2.1.0-alpha03"
-    val navigationComponent = "2.1.0-alpha02"
-    val constraintLayout = "1.1.2"
-    val androidKtx = "1.0.1"
+    const val supportLib = "1.0.0"
+    const val archLifecycle = "2.1.0"
+    const val navigationComponent = "2.1.0"
+    const val constraintLayout = "1.1.3"
+    const val androidKtx = "1.0.1"
+    const val androidxActivity = "1.0.0"
     const val room = "2.2.0-rc01"
     const val materialDesign = "1.1.0-alpha06"
 
-    val kotlin = "1.3.50"
-    val coroutinesCore = "1.3.2"
-    val coroutinesAndroid = "1.3.2"
-    val dokka = "0.9.17"
+    const val kotlin = "1.3.50"
+    const val coroutinesCore = "1.3.2"
+    const val coroutinesAndroid = "1.3.2"
+    const val dokka = "0.9.17"
 
-    val gradle = "5.2.1"
-    val gradleBuildTools = "3.4.0"
+    const val gradle = "5.2.1"
+    const val gradleBuildTools = "3.4.0"
 
-    val mavenPublish = "3.6.2"
+    const val mavenPublish = "3.6.2"
 
-    val timber = "4.7.1"
-    val timberKtx = "0.1.0"
-    val koin = "2.0.0-beta-1"
-    val retrofit = "2.6.0"
-    val okHttp3LogIntercept = "3.9.1"
+    const val timber = "4.7.1"
+    const val timberKtx = "0.1.0"
+    const val koin = "2.0.0-beta-1"
+    const val retrofit = "2.6.0"
+    const val okHttp3LogIntercept = "3.9.1"
 
-    val picasso ="2.5.2"
+    const val picasso ="2.5.2"
 
-    val stetho = "1.5.0"
-    val leakCanary = "1.6.2"
+    const val stetho = "1.5.0"
+    const val leakCanary = "1.6.2"
     const val sentry = "1.7.5"
 
-    val junit = "4.12"
-    val kotlinTest = "3.3.2"
-    val coroutinesTest = "1.2.1"
-    val espresso = "3.0.2"
-    val spoon = "2.0.0-SNAPSHOT"
+    const val junit = "4.12"
+    const val kotlinTest = "3.3.2"
+    const val coroutinesTest = "1.2.1"
+    const val espresso = "3.0.2"
+    const val spoon = "2.0.0-SNAPSHOT"
     const val uiAutomator = "2.2.0"
     const val supportTest = "1.1.0"
     const val mockk = "1.9"
@@ -45,7 +46,7 @@ private object Versions {
     val slf4j = "1.7.26"
 
     // eMan Deps
-    val kaal = "0.3.0"
+    val kaal = "0.4.0"
 }
 
 /* =============================  ANDROID ============================= */
@@ -104,6 +105,7 @@ object Dependencies {
             "androidx.navigation:navigation-fragment-ktx:${Versions.navigationComponent}"
         val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigationComponent}"
         val androidKtx = "androidx.core:core-ktx:${Versions.androidKtx}"
+        val androidxActivity = "androidx.activity:activity-ktx:${Versions.androidxActivity}"
         const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
         const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
         const val roomKtx = "androidx.room:room-ktx:${Versions.room}"

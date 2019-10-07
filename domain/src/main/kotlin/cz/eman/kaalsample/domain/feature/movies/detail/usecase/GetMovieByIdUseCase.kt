@@ -1,6 +1,6 @@
 package cz.eman.kaalsample.domain.feature.movies.detail.usecase
 
-import cz.eman.kaal.domain.Result
+import cz.eman.kaal.domain.result.Result
 import cz.eman.kaal.domain.usecases.UseCaseResult
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.domain.feature.movies.common.repository.MoviesRepository

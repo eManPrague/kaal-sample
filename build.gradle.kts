@@ -27,8 +27,8 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         google()
+        jcenter()
 
         // For Spoon snapshot, until 2.0.0 is released
         maven(url = "https://oss.sonatype.org/content/repositories/snapshots")

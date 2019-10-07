@@ -2,7 +2,7 @@ package cz.eman.kaalsample.presentation.feature.detail.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import cz.eman.kaal.domain.Result
+import cz.eman.kaal.domain.result.Result
 import cz.eman.kaal.presentation.viewmodel.BaseViewModel
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.domain.feature.movies.detail.usecase.GetMovieByIdUseCase
