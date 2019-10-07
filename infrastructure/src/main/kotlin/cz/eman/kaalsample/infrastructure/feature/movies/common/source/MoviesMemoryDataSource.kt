@@ -1,11 +1,10 @@
 package cz.eman.kaalsample.infrastructure.feature.movies.common.source
 
-import cz.eman.kaal.domain.Result
+import cz.eman.kaal.domain.result.Result
 import cz.eman.kaalsample.domain.feature.movies.common.MoviesCache
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.domain.feature.movies.common.source.MoviesDataSource
-import cz.eman.kaalsample.infrastructure.core.ErrorCode
-import cz.eman.kaalsample.infrastructure.core.ErrorCodeResult
+import cz.eman.kaalsample.infrastructure.core.MovieErrorCode
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)
@@ -17,11 +16,9 @@ class MoviesMemoryDataSource(private val moviesCache: MoviesCache) : MoviesDataS
         return if (movies.isNotEmpty()) {
             Result.Success(movies)
         } else {
-            Result.Error(
-                ErrorCodeResult(
-                    code = ErrorCode.NO_MOVIES_IN_CACHE,
-                    message = "No data available in a memory cache"
-                )
+            Result.error(
+                errorCode = MovieErrorCode.NO_MOVIES_IN_CACHE,
+                message = "No data available in a memory cache"
             )
         }
     }
@@ -31,11 +28,9 @@ class MoviesMemoryDataSource(private val moviesCache: MoviesCache) : MoviesDataS
         return if (movies.isNotEmpty()) {
             Result.Success(movies)
         } else {
-            Result.Error(
-                ErrorCodeResult(
-                    code = ErrorCode.NO_MOVIES_IN_CACHE,
-                    message = "No data available in a memory cache"
-                )
+            Result.error(
+                errorCode = MovieErrorCode.NO_MOVIES_IN_CACHE,
+                message = "No data available in a memory cache"
             )
         }
     }
@@ -45,11 +40,9 @@ class MoviesMemoryDataSource(private val moviesCache: MoviesCache) : MoviesDataS
         return if (movie != null) {
             Result.Success(movie)
         } else {
-            Result.Error(
-                ErrorCodeResult(
-                    code = ErrorCode.NO_MOVIES_IN_CACHE,
-                    message = "No data available in a memory cache"
-                )
+            Result.error(
+                errorCode = MovieErrorCode.NO_MOVIES_IN_CACHE,
+                message = "No data available in a memory cache"
             )
         }
     }

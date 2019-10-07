@@ -1,5 +1,7 @@
 package cz.eman.kaalsample.infrastructure.core
 
+import cz.eman.kaal.domain.result.ErrorCode
+
 /**
  * Enum defines all error codes across the application
  *
@@ -7,7 +9,7 @@ package cz.eman.kaalsample.infrastructure.core
  *
  * @author [Filip Šmíd](mailto:filip.smid@eman.cz)
  */
-enum class ErrorCode(val value: Int) {
+enum class MovieErrorCode(override val value: Int) : ErrorCode {
 
     NO_ERROR(0),
     NO_MOVIES_IN_CACHE(1),

@@ -71,6 +71,10 @@ dependencies {
     implementation(Dependencies.Kotlin.coroutinesCore)
     implementation(Dependencies.Kotlin.coroutinesAndroid)
 
+    // Kaal
+    implementation(Dependencies.Libs.kaalInfrastructure)
+
+    // Others
     kapt(Dependencies.Libs.roomCompiler)
     implementation(Dependencies.Libs.roomRuntime)
     implementation(Dependencies.Libs.roomKtx)

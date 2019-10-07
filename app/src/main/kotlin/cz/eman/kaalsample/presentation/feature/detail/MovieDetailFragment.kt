@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import cz.eman.kaal.domain.ErrorResult
+import cz.eman.kaal.domain.result.ErrorResult
 import cz.eman.kaal.presentation.fragment.BaseFragment
 import cz.eman.kaalsample.R
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie

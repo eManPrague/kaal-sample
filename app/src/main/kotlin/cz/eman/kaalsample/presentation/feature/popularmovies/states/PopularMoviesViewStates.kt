@@ -1,6 +1,6 @@
 package cz.eman.kaalsample.presentation.feature.popularmovies.states
 
-import cz.eman.kaal.domain.ErrorResult
+import cz.eman.kaal.domain.result.ErrorResult
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 
 /**

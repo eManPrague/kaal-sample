@@ -1,7 +1,7 @@
 package cz.eman.kaalsample.domain.feature.movies.common
 
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
-import cz.eman.kaal.domain.Result
+import cz.eman.kaal.domain.result.Result
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)
