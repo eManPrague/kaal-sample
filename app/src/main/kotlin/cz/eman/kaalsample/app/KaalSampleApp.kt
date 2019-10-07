@@ -1,8 +1,6 @@
 package cz.eman.kaalsample.app
 
 import android.app.Application
-import android.widget.Toast
-import com.amitshekhar.DebugDB
 import com.facebook.stetho.Stetho
 import com.squareup.leakcanary.LeakCanary
 import cz.eman.kaalsample.BuildConfig
@@ -14,8 +12,6 @@ import cz.eman.kaalsample.presentation.feature.favorities.di.favoritesModule
 import cz.eman.kaalsample.presentation.feature.login.di.loginModule
 import cz.eman.kaalsample.presentation.feature.popularmovies.di.popularMoviesModule
 import cz.eman.kaalsample.presentation.feature.splash.di.splashModule
-import io.sentry.Sentry
-import io.sentry.android.AndroidSentryClientFactory
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
@@ -40,7 +36,6 @@ class KaalSampleApp : Application() {
             initKoin()
             initStetho()
             initMisc()
-            showDebugDbUrl()
         }
     }
 
@@ -77,9 +72,5 @@ class KaalSampleApp : Application() {
                     *allApiModules.toTypedArray()
             ) // Define others DI modules here
         }
-    }
-
-    private fun showDebugDbUrl() {
-        Toast.makeText(this, DebugDB.getAddressLog(), Toast.LENGTH_SHORT).show()
     }
 }
