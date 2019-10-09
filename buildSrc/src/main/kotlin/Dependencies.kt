@@ -32,7 +32,9 @@ private object Versions {
     const val stetho = "1.5.0"
     const val leakCanary = "1.6.2"
     const val sentry = "1.7.5"
-    val debugDb = "1.0.6"
+    const val debugDb = "1.0.6"
+    const val flipper = "0.25.0"
+    const val soloader = "0.5.1"
 
     const val junit = "4.12"
     const val kotlinTest = "3.3.2"
@@ -142,6 +144,8 @@ object Dependencies {
         val leakCanaryFragment =
             "com.squareup.leakcanary:leakcanary-support-fragment:${Versions.leakCanary}"
         val debugDb = "com.amitshekhar.android:debug-db:${Versions.debugDb}"
+        val flipper = "com.facebook.flipper:flipper:${Versions.flipper}"
+        val soloader = "com.facebook.soloader:soloader:${Versions.soloader}"
     }
 
     /* =============================  TEST-LIBS =========================== */
