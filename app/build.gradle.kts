@@ -297,6 +297,8 @@ dependencies {
     "uatImplementation"(Dependencies.Libs.noLeakCanary)
     releaseImplementation(Dependencies.Libs.noLeakCanary)
     debugImplementation(Dependencies.Libs.debugDb)
+    implementation(Dependencies.Libs.flipper)
+    implementation(Dependencies.Libs.soloader)
 }
 
 val dokka by tasks.getting(DokkaTask::class) {

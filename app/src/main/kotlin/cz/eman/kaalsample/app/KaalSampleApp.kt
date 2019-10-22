@@ -1,6 +1,13 @@
 package cz.eman.kaalsample.app
 
 import android.app.Application
+import com.facebook.flipper.android.AndroidFlipperClient
+import com.facebook.flipper.android.utils.FlipperUtils
+import com.facebook.flipper.plugins.databases.DatabasesFlipperPlugin
+import com.facebook.flipper.plugins.inspector.DescriptorMapping
+import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin
+import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPlugin
+import com.facebook.soloader.SoLoader
 import com.facebook.stetho.Stetho
 import com.squareup.leakcanary.LeakCanary
 import cz.eman.kaalsample.BuildConfig
@@ -15,6 +22,7 @@ import cz.eman.kaalsample.presentation.feature.splash.di.splashModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
+
 
 /**
  * @author eMan s.r.o. (info@eman.cz)
@@ -36,6 +44,7 @@ class KaalSampleApp : Application() {
             initKoin()
             initStetho()
             initMisc()
+            initFlipper()
         }
     }
 
@@ -71,6 +80,25 @@ class KaalSampleApp : Application() {
                     detailModule,
                     *allApiModules.toTypedArray()
             ) // Define others DI modules here
+        }
+    }
+
+    private fun initFlipper() {
+        SoLoader.init(this, false)
+
+        if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(this)) {
+            val client = AndroidFlipperClient.getInstance(this)
+
+            // DB plugin
+            client.addPlugin(DatabasesFlipperPlugin(applicationContext));
+
+            // shared preferences plugin
+            client.addPlugin(SharedPreferencesFlipperPlugin(applicationContext))
+
+            // layout inspector plugin
+            client.addPlugin(InspectorFlipperPlugin(applicationContext, DescriptorMapping.withDefaults()))
+
+            client.start()
         }
     }
 }
