@@ -13,7 +13,7 @@ import cz.eman.kaalsample.R
 import cz.eman.kaalsample.presentation.feature.login.states.LoginStates
 import cz.eman.kaalsample.presentation.feature.login.viewModel.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
-import org.koin.androidx.viewmodel.ext.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 /**

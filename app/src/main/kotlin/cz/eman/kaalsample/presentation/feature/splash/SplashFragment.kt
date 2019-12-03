@@ -12,7 +12,7 @@ import cz.eman.kaal.presentation.fragment.BaseFragment
 import cz.eman.kaalsample.R
 import cz.eman.kaalsample.presentation.feature.splash.states.SplashStates
 import cz.eman.kaalsample.presentation.feature.splash.viewmodel.SplashViewModel
-import org.koin.androidx.viewmodel.ext.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  *  @author stefan.toth@eman.cz
