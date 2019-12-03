@@ -8,13 +8,7 @@ import cz.eman.kaalsample.R
 /**
  *  @author stefan.toth@eman.cz
  */
-class DashboardActivity : BaseActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboard)
-
-    }
+class DashboardActivity : BaseActivity(R.layout.activity_dashboard) {
 
     override fun onSupportNavigateUp() = findNavController(R.id.navHostFragment).navigateUp()
 }

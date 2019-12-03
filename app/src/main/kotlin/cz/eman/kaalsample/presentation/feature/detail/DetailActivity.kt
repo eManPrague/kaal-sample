@@ -9,12 +9,10 @@ import timber.log.Timber
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)
  */
-class DetailActivity : BaseActivity() {
+class DetailActivity : BaseActivity(R.layout.activity_detail) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
-
         // In this way we could pass the arguments to fragment in start destination
         Timber.d("Intent extras: ${intent.extras}")
         findNavController(R.id.detailNavHostFragment).setGraph(

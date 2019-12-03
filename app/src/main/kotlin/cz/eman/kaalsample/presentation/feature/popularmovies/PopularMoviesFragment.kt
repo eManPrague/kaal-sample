@@ -22,7 +22,7 @@ import cz.eman.kaalsample.presentation.feature.popularmovies.viewmodel.PopularMo
 import kotlinx.android.synthetic.main.fragment_popular_movies.*
 import kotlinx.android.synthetic.main.view_error_message.view.*
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 /**

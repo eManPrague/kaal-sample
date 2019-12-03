@@ -16,6 +16,7 @@ import cz.eman.kaalsample.infrastructure.feature.movies.favorite.source.Favorite
 import cz.eman.kaalsample.infrastructure.feature.usermanagement.source.UserLocalDataSource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -30,13 +31,13 @@ val apiServiceModule = module {
 
     single<MoviesCache> { MemoryMovieCache() }
 
-    single<MoviesDataSource>(DiInfrastructure.DATA_STORE_REMOTE) {
+    single<MoviesDataSource>(named(DiInfrastructure.DATA_STORE_REMOTE)) {
         MoviesRemoteSource(
             movieApiService = get()
         )
     }
 
-    single<MoviesDataSource>(DiInfrastructure.DATA_STORE_IN_MEMORY) {
+    single<MoviesDataSource>(named(DiInfrastructure.DATA_STORE_IN_MEMORY)) {
         MoviesMemoryDataSource(
             moviesCache = get()
         )

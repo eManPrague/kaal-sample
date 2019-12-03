@@ -19,22 +19,20 @@ import cz.eman.kaalsample.presentation.feature.favorities.adapter.FavoriteMovies
 import cz.eman.kaalsample.presentation.feature.favorities.states.FavoriteMoviesViewStates
 import cz.eman.kaalsample.presentation.feature.favorities.viewmodel.FavoritesViewModel
 import kotlinx.android.synthetic.main.fragment_my_favorite_movies.*
-import org.koin.androidx.viewmodel.ext.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)
  */
-class MyFavoriteMoviesFragment : BaseFragment() {
+class MyFavoriteMoviesFragment : BaseFragment(R.layout.fragment_my_favorite_movies) {
 
     private val viewModel by viewModel<FavoritesViewModel>()
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val view = inflater.inflate(R.layout.fragment_my_favorite_movies, container, false)
         registerEvents()
-
-        return view
     }
 
     override fun onDestroyView() {

@@ -24,7 +24,7 @@ private object Versions {
 
     const val timber = "4.7.1"
     const val timberKtx = "0.1.0"
-    const val koin = "2.0.0-beta-1"
+    const val koin = "2.0.1"
     const val retrofit = "2.6.0"
     const val okHttp3LogIntercept = "3.9.1"
 
@@ -33,7 +33,7 @@ private object Versions {
     const val stetho = "1.5.0"
     const val leakCanary = "1.6.2"
     const val sentry = "1.7.5"
-    val debugDb = "1.0.6"
+    const val debugDb = "1.0.6"
 
     const val junit = "4.12"
     const val kotlinTest = "3.3.2"
@@ -97,7 +97,7 @@ object Dependencies {
 
     object Libs {
         val appCompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
-        val supportFragment = "androidx.fragment:fragment:${Versions.appcompat}"
+        val supportFragment = "androidx.fragment:fragment:${Versions.fragment}"
         val constraintLayout =
             "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
         val lifecycleExtension = "androidx.lifecycle:lifecycle-extensions:${Versions.archLifecycle}"

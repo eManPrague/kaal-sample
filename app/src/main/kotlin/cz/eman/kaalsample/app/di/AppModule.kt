@@ -11,6 +11,7 @@ import cz.eman.kaalsample.domain.feature.usermanagement.usecase.AuthorizeUserUse
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.RegisterUserUseCase
 import cz.eman.kaalsample.infrastructure.core.di.DiInfrastructure
 import cz.eman.kaalsample.infrastructure.file.image.PicassoImageLoader
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 
@@ -21,8 +22,8 @@ val appModule = module {
 
     single<MoviesRepository> {
         MoviesRepositoryImpl(
-                movieRemoteDataSource = get(DiInfrastructure.DATA_STORE_REMOTE),
-                memoryMovieDataSource = get(DiInfrastructure.DATA_STORE_IN_MEMORY),
+                movieRemoteDataSource = get(named(DiInfrastructure.DATA_STORE_REMOTE)),
+                memoryMovieDataSource = get(named(DiInfrastructure.DATA_STORE_IN_MEMORY)),
                 favoritesMovieDataSource = get(),
                 movieCache = get()
         )

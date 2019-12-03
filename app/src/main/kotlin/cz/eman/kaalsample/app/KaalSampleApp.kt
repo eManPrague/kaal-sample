@@ -63,13 +63,13 @@ class KaalSampleApp : Application() {
     private fun initKoin() {
         startKoin {
             androidContext(this@KaalSampleApp)
-            modules(appModule,
-                    splashModule,
-                    loginModule,
-                    popularMoviesModule,
-                    favoritesModule,
-                    detailModule,
-                    *allApiModules.toTypedArray()
+            modules(appModule +
+                    splashModule +
+                    loginModule +
+                    popularMoviesModule +
+                    favoritesModule +
+                    detailModule +
+                    allApiModules
             ) // Define others DI modules here
         }
     }

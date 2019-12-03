@@ -1,9 +1,7 @@
 package cz.eman.kaalsample.presentation.feature.detail
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import cz.eman.kaal.domain.result.ErrorResult
 import cz.eman.kaal.presentation.fragment.BaseFragment
@@ -17,21 +15,17 @@ import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import kotlinx.android.synthetic.main.view_error_message.view.*
 import kotlinx.android.synthetic.main.view_movie_detail.view.*
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)
  */
-class MovieDetailFragment : BaseFragment() {
+class MovieDetailFragment : BaseFragment(R.layout.fragment_movie_detail) {
 
     private val viewModel by viewModel<DetailViewModel>()
 
     private val imageLoader by inject<PicassoImageLoader>()
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_movie_detail, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
