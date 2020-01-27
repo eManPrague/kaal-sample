@@ -14,7 +14,7 @@ object ServerRequestInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val original = chain.request()
 
-        val url = with(original.url().newBuilder()) {
+        val url = with(original.url.newBuilder()) {
             addQueryParameter(
                 MOVIE_DB_API_KEY_TEXT,
                 MOVIE_DB_API_KEY

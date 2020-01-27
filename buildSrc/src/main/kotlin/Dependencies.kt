@@ -1,64 +1,13 @@
 import org.gradle.api.JavaVersion
 
-private object Versions {
-
-    const val appcompat = "1.1.0"
-    const val fragment = "1.1.0"
-    const val archLifecycle = "2.1.0"
-    const val navigationComponent = "2.1.0"
-    const val constraintLayout = "1.1.3"
-    const val androidKtx = "1.0.1"
-    const val androidxActivity = "1.0.0"
-    const val room = "2.2.1"
-    const val materialDesign = "1.1.0-alpha06"
-
-    const val kotlin = "1.3.61"
-    const val coroutinesCore = "1.3.2"
-    const val coroutinesAndroid = "1.3.2"
-    const val dokka = "0.9.17"
-
-    const val gradle = "5.6.4"
-    const val gradleBuildTools = "3.5.2"
-
-    const val mavenPublish = "3.6.2"
-
-    const val timber = "4.7.1"
-    const val timberKtx = "0.1.0"
-    const val koin = "2.0.1"
-    const val retrofit = "2.6.0"
-    const val okHttp3LogIntercept = "3.9.1"
-
-    const val picasso ="2.5.2"
-
-    const val stetho = "1.5.0"
-    const val leakCanary = "1.6.2"
-    const val sentry = "1.7.5"
-    const val debugDb = "1.0.6"
-
-    const val junit = "4.12"
-    const val kotlinTest = "3.3.2"
-    const val coroutinesTest = "1.2.1"
-    const val espresso = "3.0.2"
-    const val spoon = "2.0.0-SNAPSHOT"
-    const val uiAutomator = "2.2.0"
-    const val supportTest = "1.1.0"
-    const val mockk = "1.9"
-    const val archCore = "2.0.0-rc01"
-    val archUnit = "0.10.2"
-    val slf4j = "1.7.26"
-
-    // eMan Deps
-    val kaal = "0.5.0"
-}
-
 /* =============================  ANDROID ============================= */
 
 object Android {
     val applicationId = "cz.eman.kaalsample"
 
     val minSdk = 21
-    val targetSdk = 28
-    val compileSdk = 28
+    val targetSdk = 29
+    val compileSdk = 29
 
     val versionCode = 1
     val versionName = "1"
