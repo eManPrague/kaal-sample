@@ -26,9 +26,7 @@ class LoginFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
-        val orientation = activity?.let { getResources().getConfiguration().orientation }
-
-        when (orientation) {
+        when (activity?.let { resources.configuration.orientation }) {
             PrintHelper.ORIENTATION_PORTRAIT -> view.setBackgroundResource(R.drawable.splash_land)
             PrintHelper.ORIENTATION_LANDSCAPE -> view.setBackgroundResource(R.drawable.splash)
         }

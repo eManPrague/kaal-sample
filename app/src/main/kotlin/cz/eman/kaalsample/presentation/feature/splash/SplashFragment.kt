@@ -24,7 +24,7 @@ class SplashFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_splash, container, false)
 
-        val orientation = activity?.let { getResources().getConfiguration().orientation }
+        val orientation = activity?.let { resources.configuration.orientation }
 
         when (orientation) {
             ORIENTATION_PORTRAIT -> view.setBackgroundResource(R.drawable.splash_land)

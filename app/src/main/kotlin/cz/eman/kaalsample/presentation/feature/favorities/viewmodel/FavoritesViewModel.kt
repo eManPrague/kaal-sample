@@ -30,8 +30,7 @@ class FavoritesViewModel(
     fun loadFavoriteMovies() {
         viewState.value = FavoriteMoviesViewStates.Loading
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) { getFavoriteMovies(Unit) }
-            when (result) {
+            when (val result = withContext(Dispatchers.IO) { getFavoriteMovies(Unit) }) {
                 is Result.Success -> {
                     viewState.value = FavoriteMoviesViewStates.MoviesLoaded(result.data)
                 }

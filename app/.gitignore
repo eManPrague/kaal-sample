@@ -2,6 +2,7 @@
 *.ipr
 *.iws
 
+.kotlintest
 .gradle
 /local.properties
 .idea/*

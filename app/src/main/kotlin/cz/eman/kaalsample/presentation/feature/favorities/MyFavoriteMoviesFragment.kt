@@ -2,9 +2,7 @@ package cz.eman.kaalsample.presentation.feature.favorities
 
 import android.os.Bundle
 import android.os.SystemClock
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
@@ -28,6 +26,8 @@ import timber.log.Timber
 class MyFavoriteMoviesFragment : BaseFragment(R.layout.fragment_my_favorite_movies) {
 
     private val viewModel by viewModel<FavoritesViewModel>()
+
+    private var lastClickTime = 0L
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -72,16 +72,14 @@ class MyFavoriteMoviesFragment : BaseFragment(R.layout.fragment_my_favorite_movi
         Toast.makeText(context, "${error.message}", Toast.LENGTH_LONG).show()
     }
 
-    private var mLastClickTime = 0L
-
     private fun onMovieSelectedEvent(movie: Movie) {
         Timber.i("Open movie detail for movie with id: ${movie.id}")
 
         // need to prevent double click :-(
-        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+        if (SystemClock.elapsedRealtime() - lastClickTime < 1000) {
             return;
         }
-        mLastClickTime = SystemClock.elapsedRealtime();
+        lastClickTime = SystemClock.elapsedRealtime();
 
         viewModel.invalidate()
 

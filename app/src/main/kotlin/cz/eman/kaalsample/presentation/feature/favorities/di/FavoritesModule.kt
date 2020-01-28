@@ -11,7 +11,7 @@ val favoritesModule = module {
 
     viewModel {
         FavoritesViewModel(
-                getFavoriteMovies = get()
+            getFavoriteMovies = get()
         )
     }
 }
