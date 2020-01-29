@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import cz.eman.kaal.domain.result.Result
 import cz.eman.kaal.presentation.viewmodel.BaseViewModel
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
-import cz.eman.kaalsample.domain.feature.movies.detail.usecase.GetMovieByIdUseCase
 import cz.eman.kaalsample.domain.feature.movies.favorite.usecase.ChangeFavoriteStatusUseCase
 import cz.eman.kaalsample.domain.feature.movies.favorite.usecase.CheckMovieFavoriteStatusUseCase
 import cz.eman.kaalsample.domain.feature.movies.favorite.usecase.Params
@@ -19,7 +18,6 @@ import timber.log.Timber
  *  @author stefan.toth@eman.cz
  */
 class DetailViewModel(
-        private val getMovieDetail: GetMovieByIdUseCase,
         private val checkFavoriteStatus: CheckMovieFavoriteStatusUseCase,
         private val changeFavoriteStatus: ChangeFavoriteStatusUseCase
 ) : BaseViewModel() {
@@ -39,7 +37,7 @@ class DetailViewModel(
     fun loadPopularMovies(movieId: Int) {
         viewState.value = DetailViewStates.Loading
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) {
+            /*val result = withContext(Dispatchers.IO) {
                 isThisMovieInFavoriteList = checkFavoriteStatus(movieId)
                 getMovieDetail(movieId)
             }
@@ -50,7 +48,7 @@ class DetailViewModel(
                 is Result.Error -> {
                     viewState.value = DetailViewStates.LoadingError(result.error)
                 }
-            }
+            }*/
         }
     }
 

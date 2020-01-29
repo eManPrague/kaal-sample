@@ -11,18 +11,6 @@ import cz.eman.kaalsample.infrastructure.core.MovieErrorCode
  */
 class MoviesMemoryDataSource(private val moviesCache: MoviesCache) : MoviesDataSource {
 
-    override suspend fun getPopularMovies(): Result<List<Movie>> {
-        val movies = moviesCache.getAll()
-        return if (movies.isNotEmpty()) {
-            Result.Success(movies)
-        } else {
-            Result.error(
-                errorCode = MovieErrorCode.NO_MOVIES_IN_CACHE,
-                message = "No data available in a memory cache"
-            )
-        }
-    }
-
     override suspend fun search(query: String): Result<List<Movie>> {
         val movies = moviesCache.search(query)
         return if (movies.isNotEmpty()) {

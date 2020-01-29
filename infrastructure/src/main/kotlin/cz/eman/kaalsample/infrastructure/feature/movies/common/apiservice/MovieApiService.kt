@@ -13,8 +13,7 @@ import retrofit2.http.Query
  */
 interface MovieApiService {
 
-    @GET("movie/popular") ///movie/now_playing
-    suspend fun getPopularMovies(): Response<MoviesWrapperDto>
+   // @GET("movie/popular") ///movie/now_playing
 
     @GET("search/movie")
     suspend fun searchMovies(@Query("query") query: String): Response<MoviesWrapperDto>

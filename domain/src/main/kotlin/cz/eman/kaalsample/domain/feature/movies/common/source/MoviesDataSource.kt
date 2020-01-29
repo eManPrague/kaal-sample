@@ -8,7 +8,7 @@ import cz.eman.kaal.domain.result.Result
  */
 interface MoviesDataSource {
 
-    suspend fun getPopularMovies(): Result<List<Movie>>
+    //suspend fun getPopularMovies(): Result<List<Movie>>
 
     suspend fun search(query: String): Result<List<Movie>>
 

@@ -68,9 +68,9 @@ class PopularMoviesFragment : BaseFragment() {
             showError(null)
             Timber.d("Popular movies state even observed: ${it.javaClass.simpleName}")
             when (it) {
-                is PopularMoviesViewStates.NotInitialized -> viewModel.loadPopularMovies()
-                is PopularMoviesViewStates.Loading -> Timber.v("Loading movies ...")
-                is PopularMoviesViewStates.MoviesLoaded -> showLoadedMovies(it.movieList)
+                //is PopularMoviesViewStates.NotInitialized -> viewModel.loadPopularMovies()
+//                is PopularMoviesViewStates.Loading -> Timber.v("Loading movies ...")
+//                is PopularMoviesViewStates.MoviesLoaded -> showLoadedMovies(it.movieList)
                 is PopularMoviesViewStates.LoadingError -> showError(it.error)
             }
         })
@@ -103,23 +103,23 @@ class PopularMoviesFragment : BaseFragment() {
             getString(R.string.error_message_text_with_additional_info, it)
         } ?: getString(R.string.error_message_text_basic)
 
-        errorMessage.errorBody.setText(message)
+        errorMessage.errorBody.text = message
 
         errorMessage.tryAgainButton.setOnClickListener {
             viewModel.reset()
         }
     }
 
-    private var mLastClickTime = 0L
+    private var lastClickTime = 0L
 
     private fun onMovieSelectedEvent(movie: Movie) {
         Timber.i("Open movie detail for movie with id: ${movie.id}")
 
         // need to prevent double click :-(
-        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+        if (SystemClock.elapsedRealtime() - lastClickTime < 1000) {
             return;
         }
-        mLastClickTime = SystemClock.elapsedRealtime();
+        lastClickTime = SystemClock.elapsedRealtime();
 
 
         val bundle = bundleOf(SELECTED_MOVIE_ID to movie.id)

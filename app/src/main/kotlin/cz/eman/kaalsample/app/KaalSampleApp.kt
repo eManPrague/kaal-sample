@@ -10,7 +10,6 @@ import cz.eman.kaalsample.infrastructure.core.di.allApiModules
 import cz.eman.kaalsample.presentation.feature.detail.di.detailModule
 import cz.eman.kaalsample.presentation.feature.favorities.di.favoritesModule
 import cz.eman.kaalsample.presentation.feature.login.di.loginModule
-import cz.eman.kaalsample.presentation.feature.popularmovies.di.popularMoviesModule
 import cz.eman.kaalsample.presentation.feature.splash.di.splashModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -63,13 +62,13 @@ class KaalSampleApp : Application() {
     private fun initKoin() {
         startKoin {
             androidContext(this@KaalSampleApp)
-            modules(appModule +
-                    splashModule +
-                    loginModule +
-                    popularMoviesModule +
-                    favoritesModule +
-                    detailModule +
-                    allApiModules
+            modules(
+                appModule +
+                        splashModule +
+                        loginModule +
+                        favoritesModule +
+                        detailModule +
+                        allApiModules
             ) // Define others DI modules here
         }
     }

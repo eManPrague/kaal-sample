@@ -8,13 +8,10 @@ import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
  */
 interface MoviesRepository {
 
-    suspend fun getPopularMovies(): Result<List<Movie>>
-
     suspend fun getFavoriteMovies(): Result<List<Movie>>
 
     suspend fun checkFavoriteStatus(id: Int): Boolean
 
     suspend fun changeFavoriteStatus(movie: Movie, newFavoriteStatus: Boolean)
 
-    suspend fun getMovieById(id: Int): Result<Movie>
 }

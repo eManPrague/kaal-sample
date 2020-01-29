@@ -10,13 +10,6 @@ import cz.eman.kaalsample.infrastructure.feature.movies.common.mapper.MoviesMapp
  */
 class MoviesRemoteSource(private val movieApiService: MovieApiService) : MoviesDataSource {
 
-    override suspend fun getPopularMovies() = callResult(
-        responseCall = { movieApiService.getPopularMovies() },
-        errorMessage = { "Cannot get Popular movies" }
-    ) {
-        MoviesMapper.mapWrapperToMovie(it)
-    }
-
     override suspend fun search(query: String) = callResult(
         responseCall = { movieApiService.searchMovies(query) },
         errorMessage = { "Cannot find movies by query[$query]" }
