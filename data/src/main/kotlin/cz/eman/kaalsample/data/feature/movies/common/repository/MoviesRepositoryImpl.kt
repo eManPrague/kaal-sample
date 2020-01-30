@@ -1,10 +1,10 @@
 package cz.eman.kaalsample.data.feature.movies.common.repository
 
 import cz.eman.kaal.domain.result.Result
+import cz.eman.kaalsample.data.feature.movies.common.source.MoviesDataSource
 import cz.eman.kaalsample.domain.feature.movies.common.MoviesCache
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.domain.feature.movies.common.repository.MoviesRepository
-import cz.eman.kaalsample.domain.feature.movies.common.source.MoviesDataSource
 import cz.eman.kaalsample.domain.feature.movies.favorite.source.FavoritesMovieDataSource
 
 /**
@@ -13,9 +13,25 @@ import cz.eman.kaalsample.domain.feature.movies.favorite.source.FavoritesMovieDa
  * @see[MoviesRepository]
  */
 class MoviesRepositoryImpl(
-        private val favoritesMovieDataSource: FavoritesMovieDataSource,
-        private val movieCache: MoviesCache
+    private val movieMemoryDataSource: MoviesDataSource,
+    private val movieRemoteDataSource: MoviesDataSource,
+    private val favoritesMovieDataSource: FavoritesMovieDataSource,
+    private val movieCache: MoviesCache
 ) : MoviesRepository {
+
+    override suspend fun getPopularMovies(): Result<List<Movie>> {
+        val memoryResult =  movieMemoryDataSource.getPopularMovies()
+        return when (memoryResult) {
+            is Result.Success -> memoryResult
+            is Result.Error -> {
+                val apiResult = movieRemoteDataSource.getPopularMovies()
+                if (apiResult is Result.Success) {
+                    movieCache.saveAll(apiResult.data)
+                }
+                apiResult
+            }
+        }
+    }
 
     override suspend fun getFavoriteMovies(): Result<List<Movie>> {
         return Result.Success(favoritesMovieDataSource.getAll())

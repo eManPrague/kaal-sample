@@ -1,4 +1,4 @@
-package cz.eman.kaalsample.domain.feature.movies.common.source
+package cz.eman.kaalsample.data.feature.movies.common.source
 
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaal.domain.result.Result
@@ -8,7 +8,7 @@ import cz.eman.kaal.domain.result.Result
  */
 interface MoviesDataSource {
 
-    //suspend fun getPopularMovies(): Result<List<Movie>>
+    suspend fun getPopularMovies(): Result<List<Movie>>
 
     suspend fun search(query: String): Result<List<Movie>>
 

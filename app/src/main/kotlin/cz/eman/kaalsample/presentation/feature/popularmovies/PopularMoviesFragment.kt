@@ -66,7 +66,7 @@ class PopularMoviesFragment : BaseFragment() {
         viewModel.viewState.observe(this, Observer {
             showLoading(it.showLoading)
             showError(null)
-            Timber.d("Popular movies state even observed: ${it.javaClass.simpleName}")
+            Timber.d("Popular movies state event observed: ${it.javaClass.simpleName}")
             when (it) {
                 //is PopularMoviesViewStates.NotInitialized -> viewModel.loadPopularMovies()
 //                is PopularMoviesViewStates.Loading -> Timber.v("Loading movies ...")

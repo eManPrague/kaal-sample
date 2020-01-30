@@ -4,8 +4,7 @@ import cz.eman.kaalsample.domain.feature.movies.common.MoviesCache
 import cz.eman.kaalsample.domain.feature.movies.favorite.source.FavoritesMovieDataSource
 import cz.eman.kaalsample.domain.feature.usermanagement.source.UserDataSource
 import cz.eman.kaalsample.infrastructure.core.room.MovieDatabase
-import cz.eman.kaalsample.domain.feature.movies.common.source.MoviesDataSource
-import cz.eman.kaalsample.infrastructure.core.di.DiInfrastructure
+import cz.eman.kaalsample.data.feature.movies.common.source.MoviesDataSource
 import cz.eman.kaalsample.infrastructure.feature.movies.common.apiservice.MOVIE_DB_HOST
 import cz.eman.kaalsample.infrastructure.feature.movies.common.apiservice.MovieApiService
 import cz.eman.kaalsample.infrastructure.feature.movies.common.apiservice.interceptor.ServerRequestInterceptor
@@ -31,15 +30,16 @@ val apiServiceModule = module {
 
     single<MoviesCache> { MemoryMovieCache() }
 
-    single<MoviesDataSource>(named(DiInfrastructure.DATA_STORE_REMOTE)) {
-        MoviesRemoteSource(
-            movieApiService = get()
-        )
-    }
 
     single<MoviesDataSource>(named(DiInfrastructure.DATA_STORE_IN_MEMORY)) {
         MoviesMemoryDataSource(
             moviesCache = get()
+        )
+    }
+
+    single<MoviesDataSource>(named(DiInfrastructure.DATA_STORE_REMOTE)) {
+        MoviesRemoteSource(
+            movieApiService = get()
         )
     }
 

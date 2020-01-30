@@ -1,14 +1,24 @@
 package cz.eman.kaalsample.infrastructure.feature.movies.common.source
 
+import cz.eman.kaal.domain.result.Result
 import cz.eman.kaal.infrastructure.common.callResult
-import cz.eman.kaalsample.domain.feature.movies.common.source.MoviesDataSource
+import cz.eman.kaalsample.data.feature.movies.common.source.MoviesDataSource
+import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.infrastructure.feature.movies.common.apiservice.MovieApiService
 import cz.eman.kaalsample.infrastructure.feature.movies.common.mapper.MoviesMapper
+import cz.eman.kaalsample.infrastructure.feature.movies.common.model.MoviesWrapperDto
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)
  */
 class MoviesRemoteSource(private val movieApiService: MovieApiService) : MoviesDataSource {
+
+    override suspend fun getPopularMovies() = callResult(
+        responseCall = { movieApiService.getPopularMovies()},
+        errorMessage = { "Cannot get popular movies"}
+    ) {
+        MoviesMapper.mapWrapperToMovie(it)
+    }
 
     override suspend fun search(query: String) = callResult(
         responseCall = { movieApiService.searchMovies(query) },

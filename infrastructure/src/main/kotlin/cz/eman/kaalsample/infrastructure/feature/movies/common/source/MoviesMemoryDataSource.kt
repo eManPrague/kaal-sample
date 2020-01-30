@@ -3,13 +3,25 @@ package cz.eman.kaalsample.infrastructure.feature.movies.common.source
 import cz.eman.kaal.domain.result.Result
 import cz.eman.kaalsample.domain.feature.movies.common.MoviesCache
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
-import cz.eman.kaalsample.domain.feature.movies.common.source.MoviesDataSource
+import cz.eman.kaalsample.data.feature.movies.common.source.MoviesDataSource
 import cz.eman.kaalsample.infrastructure.core.MovieErrorCode
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)
  */
 class MoviesMemoryDataSource(private val moviesCache: MoviesCache) : MoviesDataSource {
+
+    override suspend fun getPopularMovies(): Result<List<Movie>> {
+        val movies = moviesCache.getAll()
+        return if (movies.isNotEmpty()) {
+            Result.success(movies)
+        } else {
+            Result.error(
+                errorCode = MovieErrorCode.NO_MOVIES_IN_CACHE,
+                message = "No data available in memory cache"
+            )
+        }
+    }
 
     override suspend fun search(query: String): Result<List<Movie>> {
         val movies = moviesCache.search(query)
