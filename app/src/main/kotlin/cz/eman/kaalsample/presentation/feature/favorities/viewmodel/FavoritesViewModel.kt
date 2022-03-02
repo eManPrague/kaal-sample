@@ -3,7 +3,7 @@ package cz.eman.kaalsample.presentation.feature.favorities.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import cz.eman.kaal.domain.result.Result
-import cz.eman.kaal.presentation.viewmodel.BaseViewModel
+import cz.eman.kaal.presentation.viewmodel.KaalViewModel
 import cz.eman.kaalsample.domain.feature.movies.favorite.usecase.GetFavoriteMoviesUseCase
 import cz.eman.kaalsample.presentation.feature.favorities.states.FavoriteMoviesViewStates
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +15,7 @@ import kotlinx.coroutines.withContext
  */
 class FavoritesViewModel(
     private val getFavoriteMovies: GetFavoriteMoviesUseCase
-) : BaseViewModel() {
+) : KaalViewModel() {
 
     val viewState = MutableLiveData<FavoriteMoviesViewStates>()
 

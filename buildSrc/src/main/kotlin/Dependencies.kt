@@ -28,7 +28,6 @@ object GradlePlugins {
     val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     val dokka = "org.jetbrains.dokka:dokka-gradle-plugin:${Versions.dokka}"
     val mavenPublish = "digital.wup:android-maven-publish:${Versions.mavenPublish}"
-    val spoon = "com.jaredsburrows:gradle-spoon-plugin:${Versions.spoon}"
 }
 
 object Dependencies {
@@ -67,11 +66,9 @@ object Dependencies {
         val okHttp3LogIntercept =
             "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp3LogIntercept}"
 
-        val koinScope =
-            "org.koin:koin-androidx-scope:${Versions.koin}" // Koin Android Scope feature
-        val koinAndroid = "org.koin:koin-android:${Versions.koin}"
-        val koinViewModel =
-            "org.koin:koin-androidx-viewmodel:${Versions.koin}" // Koin Android ViewModel feature
+        val koinScope = "io.insert-koin:koin-androidx-scope:${Versions.koin}"
+        val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
+        val koinViewModel = "io.insert-koin:koin-androidx-viewmodel:${Versions.koin}"
 
         val timber = "com.jakewharton.timber:timber:${Versions.timber}"
         val timberKtx = "cz.eman.logger:timber-ktx:${Versions.timberKtx}"
@@ -91,7 +88,6 @@ object Dependencies {
         val noLeakCanary = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.leakCanary}"
         val leakCanaryFragment =
             "com.squareup.leakcanary:leakcanary-support-fragment:${Versions.leakCanary}"
-        val debugDb = "com.amitshekhar.android:debug-db:${Versions.debugDb}"
     }
 
     /* =============================  TEST-LIBS =========================== */
@@ -103,7 +99,6 @@ object Dependencies {
         val kotlinCoroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesTest}"
         const val mockkUnit = "io.mockk:mockk:${Versions.mockk}"
         const val mockkInstrument = "io.mockk:mockk-android:${Versions.mockk}"
-        val spoonClient = "com.squareup.spoon:spoon-client:${Versions.spoon}"
         const val uiAutomator = "androidx.test.uiautomator:uiautomator:${Versions.uiAutomator}"
         const val testRunner = "androidx.test:runner:${Versions.supportTest}"
         const val testRules = "androidx.test:rules:${Versions.supportTest}"

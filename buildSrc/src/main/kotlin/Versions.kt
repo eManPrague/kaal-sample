@@ -15,14 +15,14 @@ object Versions {
     const val coroutinesAndroid = "1.3.3"
     const val dokka = "0.9.17"
 
-    const val gradle = "6.1.1"
-    const val gradleBuildTools = "4.0.0-alpha09"
+    const val gradle = "7.3.3"
+    const val gradleBuildTools = "7.1.2"
 
     const val mavenPublish = "3.6.2"
 
     const val timber = "4.7.1"
     const val timberKtx = "0.1.0"
-    const val koin = "2.0.1"
+    const val koin = "2.1.6"
     const val retrofit = "2.7.1"
     const val okHttp3LogIntercept = "4.3.0"
 
@@ -37,7 +37,6 @@ object Versions {
     const val kotlinTest = "3.3.2"
     const val coroutinesTest = "1.2.1"
     const val espresso = "3.0.2"
-    const val spoon = "2.0.0-SNAPSHOT"
     const val uiAutomator = "2.2.0"
     const val supportTest = "1.1.0"
     const val mockk = "1.9"
@@ -46,5 +45,5 @@ object Versions {
     val slf4j = "1.7.26"
 
     // eMan Deps
-    val kaal = "0.6.0"
+    val kaal = "0.9.2"
 }

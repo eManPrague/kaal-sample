@@ -4,16 +4,24 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import cz.eman.kaal.domain.result.ErrorResult
-import cz.eman.kaal.presentation.fragment.BaseFragment
+import cz.eman.kaal.presentation.fragment.KaalFragment
 import cz.eman.kaalsample.R
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.infrastructure.file.image.PicassoImageLoader
 import cz.eman.kaalsample.presentation.feature.const.Const
 import cz.eman.kaalsample.presentation.feature.detail.states.DetailViewStates
 import cz.eman.kaalsample.presentation.feature.detail.viewmodel.DetailViewModel
-import kotlinx.android.synthetic.main.fragment_movie_detail.*
-import kotlinx.android.synthetic.main.view_error_message.view.*
-import kotlinx.android.synthetic.main.view_movie_detail.view.*
+import kotlinx.android.synthetic.main.fragment_movie_detail.detail
+import kotlinx.android.synthetic.main.fragment_movie_detail.detailErrorMessage
+import kotlinx.android.synthetic.main.fragment_movie_detail.detailProgress
+import kotlinx.android.synthetic.main.fragment_movie_detail.favoriteStatus
+import kotlinx.android.synthetic.main.view_error_message.view.errorBody
+import kotlinx.android.synthetic.main.view_error_message.view.tryAgainButton
+import kotlinx.android.synthetic.main.view_movie_detail.view.movieOverviewSection
+import kotlinx.android.synthetic.main.view_movie_detail.view.moviePoster
+import kotlinx.android.synthetic.main.view_movie_detail.view.movieReleaseDate
+import kotlinx.android.synthetic.main.view_movie_detail.view.movieScore
+import kotlinx.android.synthetic.main.view_movie_detail.view.movieTitle
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -21,7 +29,7 @@ import timber.log.Timber
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)
  */
-class MovieDetailFragment : BaseFragment(R.layout.fragment_movie_detail) {
+class MovieDetailFragment : KaalFragment(R.layout.fragment_movie_detail) {
 
     private val viewModel by viewModel<DetailViewModel>()
 
@@ -50,11 +58,11 @@ class MovieDetailFragment : BaseFragment(R.layout.fragment_movie_detail) {
 
     private fun showLoading(show: Boolean) {
         detailProgress.visibility =
-                if (show) {
-                    View.VISIBLE
-                } else {
-                    View.GONE
-                }
+            if (show) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
     }
 
     private fun showLoadedMovie(movie: Movie) {
@@ -82,10 +90,11 @@ class MovieDetailFragment : BaseFragment(R.layout.fragment_movie_detail) {
 
     private fun updateFavoriteIcon() {
         favoriteStatus.setImageResource(
-                if (viewModel.isThisMovieInFavoriteList)
-                    R.drawable.ic_favorite_white
-                else
-                    R.drawable.ic_favorite_border)
+            if (viewModel.isThisMovieInFavoriteList)
+                R.drawable.ic_favorite_white
+            else
+                R.drawable.ic_favorite_border
+        )
     }
 
     private fun showError(error: ErrorResult?) {
