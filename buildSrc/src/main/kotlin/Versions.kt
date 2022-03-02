@@ -37,7 +37,6 @@ object Versions {
     const val kotlinTest = "3.3.2"
     const val coroutinesTest = "1.2.1"
     const val espresso = "3.0.2"
-    const val spoon = "2.0.0-SNAPSHOT"
     const val uiAutomator = "2.2.0"
     const val supportTest = "1.1.0"
     const val mockk = "1.9"

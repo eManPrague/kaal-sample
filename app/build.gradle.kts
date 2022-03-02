@@ -10,7 +10,6 @@ plugins {
     id("kotlin-android-extensions")
     id("kotlin-kapt")
     id("org.jetbrains.dokka")
-    id("com.jaredsburrows.spoon")
 }
 
 android {
@@ -232,13 +231,6 @@ configurations.all { config ->
     }
 }*/
 
-spoon {
-    debug = true
-    grantAll = true
-    failIfNoDeviceConnected = true
-    ignoreFailures = true
-}
-
 dependencies {
     implementation(project(":infrastructure"))
     implementation(project(":domain"))
@@ -281,7 +273,6 @@ dependencies {
     testImplementation(Dependencies.TestLibs.mockkUnit)
 
     androidTestImplementation(Dependencies.TestLibs.mockkInstrument)
-    androidTestImplementation(Dependencies.TestLibs.spoonClient)
     androidTestImplementation(Dependencies.TestLibs.uiAutomator)
     androidTestImplementation(Dependencies.TestLibs.testRules)
     androidTestImplementation(Dependencies.TestLibs.testRunner)

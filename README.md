@@ -71,7 +71,6 @@ object GradlePlugins {
     val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     val dokka = "org.jetbrains.dokka:dokka-gradle-plugin:${Versions.dokka}"
     val mavenPublish = "digital.wup:android-maven-publish:${Versions.mavenPublish}"
-    val spoon = "com.jaredsburrows:gradle-spoon-plugin:${Versions.spoon}"
 
     val emanExtension = "cz.eman.gradle:gradle-extension-plugin:${Versions.emanExtension}"
  }
@@ -98,9 +97,6 @@ buildscript {
 
         // EmanExtension Gradle Plugin
         classpath(GradlePlugins.emanExtension)
-
-        // Spoon Gradle Plugin
-        classpath(GradlePlugins.spoon)
     }
 }
 

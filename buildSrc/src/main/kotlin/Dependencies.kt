@@ -28,7 +28,6 @@ object GradlePlugins {
     val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     val dokka = "org.jetbrains.dokka:dokka-gradle-plugin:${Versions.dokka}"
     val mavenPublish = "digital.wup:android-maven-publish:${Versions.mavenPublish}"
-    val spoon = "com.jaredsburrows:gradle-spoon-plugin:${Versions.spoon}"
 }
 
 object Dependencies {
@@ -103,7 +102,6 @@ object Dependencies {
         val kotlinCoroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesTest}"
         const val mockkUnit = "io.mockk:mockk:${Versions.mockk}"
         const val mockkInstrument = "io.mockk:mockk-android:${Versions.mockk}"
-        val spoonClient = "com.squareup.spoon:spoon-client:${Versions.spoon}"
         const val uiAutomator = "androidx.test.uiautomator:uiautomator:${Versions.uiAutomator}"
         const val testRunner = "androidx.test:runner:${Versions.supportTest}"
         const val testRules = "androidx.test:rules:${Versions.supportTest}"
