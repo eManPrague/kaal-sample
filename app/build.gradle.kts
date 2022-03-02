@@ -1,7 +1,4 @@
 import org.jetbrains.dokka.gradle.DokkaTask
-import com.android.build.gradle.api.ApplicationVariant
-import com.android.build.gradle.api.BaseVariantOutput
-import com.android.build.gradle.internal.api.BaseVariantOutputImpl
 import org.jetbrains.dokka.gradle.LinkMapping
 
 plugins {
@@ -13,25 +10,29 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Android.compileSdk)
+    compileSdk = Android.compileSdk
 
     defaultConfig {
         applicationId = Android.applicationId
 
-        minSdkVersion(Android.minSdk)
-        targetSdkVersion(Android.targetSdk)
+        minSdk = Android.minSdk
+        targetSdk = Android.targetSdk
 
         versionCode = getGitCommits()
-        versionName = findPropertyOrNull( "versionName") ?: Android.versionName
+        versionName = findPropertyOrNull("versionName") ?: Android.versionName
 
         testInstrumentationRunner = Android.testInstrumentRunner
 
         packagingOptions {
-            exclude("META-INF/domain.kotlin_module")
-            exclude("META-INF/data.kotlin_module")
-            exclude("META-INF/infrastructure.kotlin_module")
-            exclude("META-INF/LICENSE.md")
-            exclude("META-INF/LICENSE-notice.md")
+            resources.excludes.addAll(
+                listOf(
+                    "META-INF/domain.kotlin_module",
+                    "META-INF/data.kotlin_module",
+                    "META-INF/infrastructure.kotlin_module",
+                    "META-INF/LICENSE.md",
+                    "META-INF/LICENSE-notice.md"
+                )
+            )
         }
 
     }
@@ -70,10 +71,6 @@ android {
             )
 
             signingConfig = signingConfigs.getByName("debug")
-
-            // Icon - based on branch name
-            //val tmpBranchName = getPropertyOrDefaultValue('branchName', gitBranchName)
-            //createIcons(tmpBranchName, "#ffffff", getBackgroundColor(tmpBranchName), "debug")
         }
 
         create("uat") {
@@ -85,13 +82,6 @@ android {
             buildConfigField("String", "SENTRY_DSN", "\"${findPropertyOrNull("sentryDsn")}\"")
 
             signingConfig = signingConfigs.getByName("uat")
-
-            /*createIcons(
-                getPropertyOrDefaultValue("branchName", gitBranchName),
-                "#ffffff",
-                "#de3737",
-                "uat"
-            )*/
         }
 
         getByName("release") {
@@ -105,85 +95,17 @@ android {
 
     testBuildType = "debug"
 
-    /*buildTypes {
-        debug {
-            applicationIdSuffix ".dev"
-
-            debuggable true
-
-            buildConfigField "String", "SENTRY_DSN", "\"${getPropertyOrDefaultValue("sentryDsn", "")}\""
-
-            signingConfig signingConfigs.debug
-
-            // Icon - based on branch name
-            String tmpBranchName = getPropertyOrDefaultValue('branchName', gitBranchName)
-            createIcons(tmpBranchName, "#ffffff", getBackgroundColor(tmpBranchName), "debug")
-        }
-
-        uat {
-            applicationIdSuffix ".uat"
-
-            debuggable true
-
-            buildConfigField "String", "SENTRY_DSN", "\"${getPropertyValue("sentryDsn")}\""
-
-            signingConfig signingConfigs.uat
-
-            createIcons(getPropertyOrDefaultValue('branchName', gitBranchName), "#ffffff", "#de3737", "uat")
-        }
-
-        release {
-            debuggable false
-
-            buildConfigField "String", "SENTRY_DSN", "\"${getPropertyValue("sentryDsn")}\""
-
-            signingConfig signingConfigs.release
-        }
-    }*/
-
-    flavorDimensions("api")
+    flavorDimensions.add("api")
 
     productFlavors {
         create("apiDev") {
-            setDimension("api")
+            dimension = "api"
         }
 
         create("apiProd") {
-            setDimension("api")
+            dimension = "api"
         }
     }
-
-    applicationVariants.all(object : Action<ApplicationVariant> {
-        override fun execute(variant: ApplicationVariant) {
-            variant.outputs.all(object : Action<BaseVariantOutput> {
-                override fun execute(output: BaseVariantOutput) {
-
-                    val outputImpl = output as BaseVariantOutputImpl
-                    outputImpl.outputFileName = "${rootProject.name}.apk"
-                }
-            })
-        }
-    })
-    /*applicationVariants.all { variant ->
-        variant.outputs.all {
-            outputFileName = "${rootProject.name}.apk"
-        }
-    }*/
-
-    /*dataBinding {
-        enabled = true
-    }*/
-
-    /*testOptions {
-        unitTests.apply {
-            isReturnDefaultValues = true
-            all(KotlinClosure1<Any, Test>({
-                (this as Test).also {
-                    maxParallelForks = Runtime.getRuntime().availableProcessors()
-                }, this))
-            }
-        }
-    }*/
 
     testOptions {
         unitTests.isReturnDefaultValues = true
@@ -203,33 +125,13 @@ android {
 
     compileOptions {
         sourceCompatibility = Android.sourceCompatibilityJava
-        setTargetCompatibility(Android.targetCompatibilityJava)
+        targetCompatibility = Android.targetCompatibilityJava
     }
 
-    lintOptions {
+    lint {
         lintConfig = File("$rootDir/lint.xml")
     }
-
 }
-
-/*configurations.all(object : Action<Configuration> {
-    override fun execute(config: Configuration) {
-        if (config.name.contains("UnitTest") || config.name.contains("AndroidTest")) {
-            config.resolutionStrategy.all({
-                execute()
-            })
-        }
-    }
-})
-configurations.all { config ->
-    if (config.name.contains("UnitTest") || config.name.contains("AndroidTest")) {
-        config.resolutionStrategy.eachDependency { details ->
-            if (details.requested.group == 'com.squareup.leakcanary' && details.requested.name == 'leakcanary-android') {
-                details.useTarget(group: details.requested.group, name: 'leakcanary-android-no-op', version: details.requested.version)
-            }
-        }
-    }
-}*/
 
 dependencies {
     implementation(project(":infrastructure"))
@@ -287,17 +189,14 @@ dependencies {
     debugImplementation(Dependencies.Libs.leakCanaryFragment)
     "uatImplementation"(Dependencies.Libs.noLeakCanary)
     releaseImplementation(Dependencies.Libs.noLeakCanary)
-    debugImplementation(Dependencies.Libs.debugDb)
 }
 
 val dokka by tasks.getting(DokkaTask::class) {
     moduleName = "app"
     outputFormat = "html" // html, md, javadoc,
     outputDirectory = "$buildDir/dokka/html"
-    //processConfigurations = ["compile"]
-    //samples = ["samples/basic.kt", "samples/advanced.kt"]
     includes = listOf("../README.md")
-    val file = File(project.projectDir,"src/main/kotlin")
+    val file = File(project.projectDir, "src/main/kotlin")
     val relativePath = rootDir.toPath().relativize(file.toPath()).toString()
     linkMapping(delegateClosureOf<LinkMapping> {
         dir = file.path
@@ -305,18 +204,5 @@ val dokka by tasks.getting(DokkaTask::class) {
         suffix = "#L"
     })
     sourceDirs = files("src/main/kotlin")
-}
-
-tasks {
-    val androidSourcesJar by creating(Jar::class) {
-        archiveClassifier.set("sources")
-        from(android.sourceSets["main"].java.srcDirs)
-    }
-
-    val androidDokkaHtmlJar by creating(Jar::class) {
-        archiveClassifier.set("kdoc-html")
-        from("$buildDir/dokka/html")
-        dependsOn(dokka)
-    }
 }
 

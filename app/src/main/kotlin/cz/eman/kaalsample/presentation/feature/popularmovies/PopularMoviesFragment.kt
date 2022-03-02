@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import cz.eman.kaal.domain.result.ErrorResult
-import cz.eman.kaal.presentation.fragment.BaseFragment
+import cz.eman.kaal.presentation.fragment.KaalFragment
 import cz.eman.kaalsample.R
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.infrastructure.device.isLandscape
@@ -28,7 +28,7 @@ import timber.log.Timber
 /**
  *  @author stefan.toth@eman.cz
  */
-class PopularMoviesFragment : BaseFragment() {
+class PopularMoviesFragment : KaalFragment() {
 
     private val viewModel by viewModel<PopularMoviesViewModel>()
 

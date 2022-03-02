@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import cz.eman.kaal.domain.result.ErrorResult
-import cz.eman.kaal.presentation.fragment.BaseFragment
+import cz.eman.kaal.presentation.fragment.KaalFragment
 import cz.eman.kaalsample.R
 import cz.eman.kaalsample.domain.feature.movies.common.model.Movie
 import cz.eman.kaalsample.presentation.feature.const.Const
@@ -25,7 +25,7 @@ import timber.log.Timber
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)
  */
-class MyFavoriteMoviesFragment : BaseFragment(R.layout.fragment_my_favorite_movies) {
+class MyFavoriteMoviesFragment : KaalFragment(R.layout.fragment_my_favorite_movies) {
 
     private val viewModel by viewModel<FavoritesViewModel>()
 

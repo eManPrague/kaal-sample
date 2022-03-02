@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.print.PrintHelper.ORIENTATION_LANDSCAPE
 import androidx.print.PrintHelper.ORIENTATION_PORTRAIT
-import cz.eman.kaal.presentation.fragment.BaseFragment
+import cz.eman.kaal.presentation.fragment.KaalFragment
 import cz.eman.kaalsample.R
 import cz.eman.kaalsample.presentation.feature.splash.states.SplashStates
 import cz.eman.kaalsample.presentation.feature.splash.viewmodel.SplashViewModel
@@ -17,7 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 /**
  *  @author stefan.toth@eman.cz
  */
-class SplashFragment : BaseFragment() {
+class SplashFragment : KaalFragment() {
 
     private val viewModel by viewModel<SplashViewModel>()
 

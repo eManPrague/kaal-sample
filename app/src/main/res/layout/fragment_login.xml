@@ -71,6 +71,12 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/passwordStrength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"/>
+
             <Button
                 android:id="@+id/loginButton"
                 android:layout_width="match_parent"

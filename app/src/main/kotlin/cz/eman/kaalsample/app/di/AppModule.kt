@@ -8,6 +8,7 @@ import cz.eman.kaalsample.domain.feature.movies.favorite.usecase.GetFavoriteMovi
 import cz.eman.kaalsample.domain.feature.movies.popular.usecase.GetPopularMoviesUseCase
 import cz.eman.kaalsample.domain.feature.usermanagement.repository.UserRepository
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.AuthorizeUserUseCase
+import cz.eman.kaalsample.domain.feature.usermanagement.usecase.CheckPasswordStrengthUseCase
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.RegisterUserUseCase
 import cz.eman.kaalsample.infrastructure.core.di.DiInfrastructure
 import cz.eman.kaalsample.infrastructure.file.image.PicassoImageLoader
@@ -32,6 +33,8 @@ val appModule = module {
     single<UserRepository> {
         UserRepositoryImpl(userDataSource = get())
     }
+
+    single { CheckPasswordStrengthUseCase() }
 
     single { GetPopularMoviesUseCase(moviesRepository = get()) }
 
