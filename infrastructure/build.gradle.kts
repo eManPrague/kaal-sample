@@ -1,5 +1,4 @@
 import org.jetbrains.dokka.gradle.DokkaTask
-import java.io.ByteArrayOutputStream
 
 plugins {
     id("com.android.library")
@@ -15,9 +14,6 @@ android {
     defaultConfig {
         minSdkVersion(Android.minSdk)
         targetSdkVersion(Android.targetSdk)
-
-        versionCode = Android.versionCode
-        versionName = "${project.version}"
 
         testInstrumentationRunner = Android.testInstrumentRunner
     }
@@ -55,12 +51,12 @@ android {
 
     compileOptions {
         sourceCompatibility = Android.sourceCompatibilityJava
-        setTargetCompatibility(Android.targetCompatibilityJava)
+        targetCompatibility = Android.targetCompatibilityJava
 
     }
 
     lintOptions {
-        setLintConfig(File("$rootDir/lint.xml"))
+        lintConfig = File("$rootDir/lint.xml")
     }
 }
 

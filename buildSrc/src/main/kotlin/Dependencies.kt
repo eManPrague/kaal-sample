@@ -66,11 +66,9 @@ object Dependencies {
         val okHttp3LogIntercept =
             "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp3LogIntercept}"
 
-        val koinScope =
-            "org.koin:koin-androidx-scope:${Versions.koin}" // Koin Android Scope feature
-        val koinAndroid = "org.koin:koin-android:${Versions.koin}"
-        val koinViewModel =
-            "org.koin:koin-androidx-viewmodel:${Versions.koin}" // Koin Android ViewModel feature
+        val koinScope = "io.insert-koin:koin-androidx-scope:${Versions.koin}"
+        val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
+        val koinViewModel = "io.insert-koin:koin-androidx-viewmodel:${Versions.koin}"
 
         val timber = "com.jakewharton.timber:timber:${Versions.timber}"
         val timberKtx = "cz.eman.logger:timber-ktx:${Versions.timberKtx}"
@@ -90,7 +88,6 @@ object Dependencies {
         val noLeakCanary = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.leakCanary}"
         val leakCanaryFragment =
             "com.squareup.leakcanary:leakcanary-support-fragment:${Versions.leakCanary}"
-        val debugDb = "com.amitshekhar.android:debug-db:${Versions.debugDb}"
     }
 
     /* =============================  TEST-LIBS =========================== */

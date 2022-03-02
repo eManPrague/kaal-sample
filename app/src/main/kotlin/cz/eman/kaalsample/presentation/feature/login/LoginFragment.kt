@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.print.PrintHelper
-import cz.eman.kaal.presentation.fragment.BaseFragment
+import cz.eman.kaal.presentation.fragment.KaalFragment
 import cz.eman.kaalsample.R
 import cz.eman.kaalsample.presentation.feature.login.states.LoginStates
 import cz.eman.kaalsample.presentation.feature.login.viewModel.LoginViewModel
@@ -19,7 +19,7 @@ import timber.log.Timber
 /**
  *  @author stefan.toth@eman.cz
  */
-class LoginFragment : BaseFragment() {
+class LoginFragment : KaalFragment() {
 
     private val viewModel by viewModel<LoginViewModel>()
 

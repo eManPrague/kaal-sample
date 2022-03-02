@@ -20,6 +20,8 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        // Kaal and eMan libs
+        maven(url = "https://nexus.eman.cz/repository/maven-public")
     }
 }
 

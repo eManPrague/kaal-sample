@@ -2,14 +2,14 @@ package cz.eman.kaalsample.presentation.feature.detail
 
 import android.os.Bundle
 import androidx.navigation.findNavController
-import cz.eman.kaal.presentation.activity.BaseActivity
+import cz.eman.kaal.presentation.activity.KaalActivity
 import cz.eman.kaalsample.R
 import timber.log.Timber
 
 /**
  * @author vsouhrada (vaclav.souhrada@eman.cz)
  */
-class DetailActivity : BaseActivity(R.layout.activity_detail) {
+class DetailActivity : KaalActivity(R.layout.activity_detail) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
