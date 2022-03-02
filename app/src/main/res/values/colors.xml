@@ -7,4 +7,12 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="grey">#A3A3A3</color>
+
+    <!-- Password Strength text colors -->
+    <color name="password_strength_invalid">#F44336</color>
+    <color name="password_strength_unknown">#F44336</color>
+    <color name="password_strength_weak">#F44336</color>
+    <color name="password_strength_medium">#FF9800</color>
+    <color name="password_strength_strong">#4CAF50</color>
+
 </resources>

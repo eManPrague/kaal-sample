@@ -30,6 +30,12 @@
 
     <string name="splash_fragment_title">Splash</string>
 
+    <!-- Password Strength -->
+    <string name="password_strength_invalid">Password cannot contains special characters</string>
+    <string name="password_strength_weak">Password strength: Weak!</string>
+    <string name="password_strength_medium">Password strength: Medium</string>
+    <string name="password_strength_strong">Password strength: Strong</string>
+    <string name="password_strength_unknown">Unknown error!</string>
 
     <!-- Login -->
     <string name="login_fragment_title">Login</string>
