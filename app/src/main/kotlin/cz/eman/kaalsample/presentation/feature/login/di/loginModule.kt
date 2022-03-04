@@ -11,8 +11,9 @@ val loginModule = module {
 
     viewModel {
         LoginViewModel(
-                authoriseUser = get(),
-                registerUser = get()
+            authoriseUser = get(),
+            registerUser = get(),
+            checkPsswdStrength = get()
         )
     }
 }

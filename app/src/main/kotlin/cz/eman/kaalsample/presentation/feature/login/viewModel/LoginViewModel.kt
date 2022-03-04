@@ -1,12 +1,17 @@
 package cz.eman.kaalsample.presentation.feature.login.viewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import cz.eman.kaal.domain.result.Result
 import cz.eman.kaal.presentation.viewmodel.KaalViewModel
+import cz.eman.kaal.presentation.viewmodel.launch
 import cz.eman.kaalsample.domain.feature.usermanagement.model.User
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.AuthorizeUserUseCase
+import cz.eman.kaalsample.domain.feature.usermanagement.usecase.CheckPsswdStrengthUseCase
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.RegisterUserUseCase
+import cz.eman.kaalsample.presentation.feature.login.model.PswdStateVo
+import cz.eman.kaalsample.presentation.feature.login.model.toPswdState
 import cz.eman.kaalsample.presentation.feature.login.states.LoginStates
 import cz.eman.logger.logDebug
 import cz.eman.logger.logVerbose
@@ -19,11 +24,15 @@ import kotlinx.coroutines.withContext
  */
 class LoginViewModel(
     private val authoriseUser: AuthorizeUserUseCase,
-    private val registerUser: RegisterUserUseCase
+    private val registerUser: RegisterUserUseCase,
+    private val checkPsswdStrength: CheckPsswdStrengthUseCase
 ) : KaalViewModel() {
 
     // fixme - use SingleLiveData instead of MutableLiveData
     val loginStates = MutableLiveData<LoginStates>()
+
+    private val _passwordStrength = MutableLiveData<PswdStateVo>()
+    val passwordStrength: LiveData<PswdStateVo> = _passwordStrength
 
     init {
         loginStates.value = LoginStates.IdleState
@@ -43,6 +52,13 @@ class LoginViewModel(
             loginUser(user)
         } else {
             registerUser(user)
+        }
+    }
+
+    fun validatePassword(pswd: String) {
+        launch {
+            val result = checkPsswdStrength(pswd)
+            _passwordStrength.value = result.toPswdState()
         }
     }
 
