@@ -2,12 +2,17 @@ package cz.eman.kaalsample.domain.feature.usermanagement.usecase
 
 import cz.eman.kaal.domain.usecases.UseCase
 import cz.eman.kaalsample.domain.feature.usermanagement.model.PasswordStrength
+import cz.eman.kaalsample.domain.feature.usermanagement.repository.SecurityRepository
 
-class CheckPasswordStrengthUseCase() : UseCase<PasswordStrength, String>() {
+class CheckPasswordStrengthUseCase(
+    private val securityRepository: SecurityRepository
+) : UseCase<PasswordStrength, String>() {
 
     override suspend fun doWork(params: String): PasswordStrength {
-        val forbiddenChars = listOf("/", ",", " ")
-        val suggestedChars = listOf("!", "@", "#", "?", "]")
+
+        val forbiddenChars = securityRepository.getForbiddenCharacters()
+        val suggestedChars = securityRepository.getSuggestedCharacters()
+
         return when {
             forbiddenChars.any { it in params } -> PasswordStrength.Invalid
 
