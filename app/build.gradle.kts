@@ -128,6 +128,10 @@ android {
         targetCompatibility = Android.targetCompatibilityJava
     }
 
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
     lint {
         lintConfig = File("$rootDir/lint.xml")
     }
@@ -206,3 +210,6 @@ val dokka by tasks.getting(DokkaTask::class) {
     sourceDirs = files("src/main/kotlin")
 }
 
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
