@@ -60,7 +60,8 @@ class CheckPasswordStrengthUseCaseTest {
             listOf(
                 "asdfghjk",
                 "qwerTyUiop",
-                "zxcvb76j5h"
+                "zxcvb76j5h",
+                "hd4lFG6e"
             ).forEach {
                 val result = checkPasswordStrength(it)
                 result shouldBe PasswordStrength.Medium
@@ -73,9 +74,9 @@ class CheckPasswordStrengthUseCaseTest {
         val checkPasswordStrength = CheckPasswordStrengthUseCase()
         runBlocking {
             listOf(
-                "adsFkJ78",
-                "DfgG5hjkjh",
-                "assd56HGr67"
+                "ad@FkJ78",
+                "DfgG!5jkjh",
+                "assd56HG#67"
             ).forEach {
                 val result = checkPasswordStrength(it)
                 result shouldBe PasswordStrength.Strong
