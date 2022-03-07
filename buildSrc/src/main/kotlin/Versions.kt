@@ -35,12 +35,12 @@ object Versions {
 
     const val junit = "4.12"
     const val kotlinTest = "3.4.2"
-    const val coroutinesTest = "1.2.1"
+    const val coroutinesTest = "1.6.0"
     const val espresso = "3.0.2"
     const val uiAutomator = "2.2.0"
     const val supportTest = "1.1.0"
     const val mockk = "1.12.3"
-    const val archCore = "2.0.0-rc01"
+    const val archCore = "2.1.0"
     val archUnit = "0.10.2"
     val slf4j = "1.7.26"
 
