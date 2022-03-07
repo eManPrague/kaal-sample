@@ -68,6 +68,7 @@ class LoginFragment : KaalFragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 loginPassword.text.let { viewModel.checkPassword(it.toString()) }
+                passwordStrengthIcon.drawable.let { viewModel.checkPassword(it.toString()) }
             }
 
             override fun afterTextChanged(s: Editable?) {}
