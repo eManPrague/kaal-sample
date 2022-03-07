@@ -31,6 +31,10 @@ tasks.withType<KotlinCompile> {
     }
 }
 
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
+}
+
 val dokka by tasks.getting(DokkaTask::class) {
     moduleName = "domain"
     outputFormat = "html" // html, md, javadoc,
