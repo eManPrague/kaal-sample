@@ -4,7 +4,8 @@ import cz.eman.kaalsample.domain.feature.usermanagement.repository.SecurityRepos
 
 class SecurityRepositoryImpl : SecurityRepository {
     override fun getSuggestedCharacters(): List<Char> {
-        return listOf('!', '@', '#', '?', '(', ')', '[', ']')
+        return listOf('!', '@', '#', '?', '(', ')', '[', ']', '{', '}', '"', '$', '%',
+            '&', '\'', '*', '+', '-', '.', ':', ';', '=', '\\', '^', '_', '`', '|', '~')
     }
 
     override fun getForbiddenCharacters(): List<Char> {
