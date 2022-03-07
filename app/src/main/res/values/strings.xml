@@ -32,6 +32,7 @@
 
     <!-- Password Strength -->
     <string name="password_strength_invalid">Password cannot contains special characters</string>
+    <string name="password_strength_empty">Password cannot be empty!</string>
     <string name="password_strength_weak">Password strength: Weak!</string>
     <string name="password_strength_medium">Password strength: Medium</string>
     <string name="password_strength_strong">Password strength: Strong</string>

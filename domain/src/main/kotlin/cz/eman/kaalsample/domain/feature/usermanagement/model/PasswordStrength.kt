@@ -4,6 +4,8 @@ sealed class PasswordStrength {
 
     object Invalid : PasswordStrength()
 
+    object Empty : PasswordStrength()
+
     object Weak : PasswordStrength()
 
     object Medium : PasswordStrength()

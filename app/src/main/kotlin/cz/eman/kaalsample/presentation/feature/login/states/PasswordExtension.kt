@@ -10,6 +10,11 @@ fun PasswordStrength.toPasswordState() : PasswordStrengthState =
                 R.string.password_strength_invalid,
                 R.color.password_strength_invalid
             )
+            is PasswordStrength.Empty ->
+            PasswordStrengthState(
+                R.string.password_strength_empty,
+                R.color.password_strength_invalid
+            )
         is PasswordStrength.Weak ->
             PasswordStrengthState(
                 R.string.password_strength_weak,
