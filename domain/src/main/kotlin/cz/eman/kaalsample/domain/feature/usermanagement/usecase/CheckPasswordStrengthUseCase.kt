@@ -9,13 +9,14 @@ class CheckPasswordStrengthUseCase() : UseCase<PasswordStrength, String>() {
     override suspend fun doWork(params: String): PasswordStrength {
         val forbiddenChars = listOf("/", ",", " ")
         return when {
-            forbiddenChars.any { it in params } || params.isEmpty() -> PasswordStrength.Invalid
+            forbiddenChars.any { it in params } -> PasswordStrength.Invalid
             params.length >= 7 && (params.chars().anyMatch(Character::isUpperCase) &&
                     params.chars().anyMatch(Character::isLowerCase) &&
                     params.chars().anyMatch(Character::isDigit)) -> PasswordStrength.Strong
             params.length >= 7 && (params.chars().anyMatch(Character::isUpperCase) ||
                     params.chars().anyMatch(Character::isLowerCase) ||
                     params.chars().anyMatch(Character::isDigit)) -> PasswordStrength.Medium
+            params.isEmpty() -> PasswordStrength.Empty
             else -> PasswordStrength.Weak
         }
     }
