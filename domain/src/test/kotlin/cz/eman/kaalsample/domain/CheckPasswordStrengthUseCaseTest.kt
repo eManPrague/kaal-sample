@@ -13,7 +13,6 @@ class CheckPasswordStrengthUseCaseTest {
         val checkPasswordStrength = CheckPasswordStrengthUseCase()
         runBlocking {
             listOf(
-                "",
                 " ",
                 ",",
                 "/",
@@ -22,6 +21,19 @@ class CheckPasswordStrengthUseCaseTest {
             ).forEach {
                 val result = checkPasswordStrength(it)
                 result shouldBe PasswordStrength.Invalid
+            }
+        }
+    }
+
+    @Test
+    fun `password strength should be empty`() {
+        val checkPasswordStrength = CheckPasswordStrengthUseCase()
+        runBlocking {
+            listOf(
+                ""
+            ).forEach {
+                val result = checkPasswordStrength(it)
+                result shouldBe PasswordStrength.Empty
             }
         }
     }
