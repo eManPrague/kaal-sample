@@ -27,7 +27,7 @@ fun PasswordStrength.toPasswordState() : PasswordStrengthState =
             PasswordStrengthState(
                 R.string.password_strength_medium,
                 R.color.password_strength_medium,
-                R.drawable.ic_baseline_cancel_24
+                R.drawable.ic_baseline_error_24
             )
         is PasswordStrength.Strong ->
             PasswordStrengthState(

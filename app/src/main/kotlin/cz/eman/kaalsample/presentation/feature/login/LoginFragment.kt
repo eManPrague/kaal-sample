@@ -68,7 +68,7 @@ class LoginFragment : KaalFragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 loginPassword.text.let { viewModel.checkPassword(it.toString()) }
-                passwordStrengthIcon.drawable.let { viewModel.checkPassword(it.toString()) }
+                //passwordStrengthIcon.drawable.let { viewModel.passwordStrengthState.value.toString()) }
             }
 
             override fun afterTextChanged(s: Editable?) {}
@@ -77,6 +77,7 @@ class LoginFragment : KaalFragment() {
         viewModel.passwordStrengthState.observe(viewLifecycleOwner, Observer {
             passwordStrength.setText(it.errorTextId)
             passwordStrength.setTextColor(resources.getColor(it.textColorId))
+            passwordStrengthIcon.setImageResource(it.iconSourceId)
         })
 
         switchUseCase(viewModel.loginUseCase)
