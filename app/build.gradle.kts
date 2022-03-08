@@ -169,6 +169,7 @@ dependencies {
     implementation(Dependencies.Libs.koinScope)
     implementation(Dependencies.Libs.timber)
     implementation(Dependencies.Libs.sentry)
+    implementation("androidx.appcompat:appcompat:1.4.1")
 
 
     // Tests
