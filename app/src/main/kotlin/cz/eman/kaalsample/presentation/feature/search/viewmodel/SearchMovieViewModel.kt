@@ -1,5 +1,6 @@
 package cz.eman.kaalsample.presentation.feature.search.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import cz.eman.kaal.domain.result.Result
@@ -8,9 +9,9 @@ import cz.eman.kaal.presentation.viewmodel.launch
 import cz.eman.kaalsample.domain.feature.movies.popular.usecase.GetPopularMoviesUseCase
 import cz.eman.kaalsample.domain.feature.movies.search.usecase.SearchMoviesUseCase
 import cz.eman.kaalsample.presentation.feature.search.states.SearchMovieViewStates
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
 /**
@@ -34,13 +35,15 @@ class SearchMovieViewModel(
 
     fun loadMovies(query: String? = null) {
         viewState.value = SearchMovieViewStates.Loading
+
         launch {
-            when (val result = withContext(Dispatchers.IO) {
+            val result = withContext(Dispatchers.IO) {
                 if (query.isNullOrBlank())
                     getPopularMovies(Unit)
                 else
                     searchMovies(query)
-            }) {
+            }
+            when (result) {
                 is Result.Success -> {
                     viewState.value = SearchMovieViewStates.MoviesLoaded(result.data)
                 }

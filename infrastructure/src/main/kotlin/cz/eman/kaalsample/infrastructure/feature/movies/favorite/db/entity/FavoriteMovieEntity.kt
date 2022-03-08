@@ -18,6 +18,6 @@ data class FavoriteMovieEntity(
     var originalLanguage: String,
     var originalTitle: String,
     var backdropPath: String? = null,
-    var releaseDate: String,
+    var releaseDate: String? = null,
     var overview: String
 )

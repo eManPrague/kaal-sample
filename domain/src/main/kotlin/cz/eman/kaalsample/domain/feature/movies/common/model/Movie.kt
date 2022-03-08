@@ -6,7 +6,7 @@ data class Movie(
         val id: Int = -1,
         val originalTitle: String = "",
         val originalLanguage: String = "",
-        val releaseDate: String = "",
+        val releaseDate: String? = "",
         var posterPath: String? = null,
         val popularity: Double = 0.0,
         val title: String = "",
