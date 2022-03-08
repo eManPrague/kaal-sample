@@ -29,7 +29,11 @@
         android:id="@+id/searchMovieFragment"
         android:name="cz.eman.kaalsample.presentation.feature.search.SearchMovieFragment"
         android:label="@string/search_movie_title"
-        tools:layout="@layout/fragment_search_movies" />
+        tools:layout="@layout/fragment_search_movies" >
+        <action
+            android:id="@+id/action_searchMovieFragment_to_detailMovieActivity"
+            app:destination="@id/detailMovieActivity" />
+    </fragment>
 
     <activity
         android:id="@+id/detailMovieActivity"

@@ -142,7 +142,7 @@ class SearchMovieFragment : KaalFragment() {
 
 
         val bundle = bundleOf(SELECTED_MOVIE_ID to movie.id)
-        findNavController().navigate(R.id.action_popularMoviesFragment_to_detailMovieActivity, bundle)
+        findNavController().navigate(R.id.action_searchMovieFragment_to_detailMovieActivity, bundle)
     }
 
     override fun onStart() {
