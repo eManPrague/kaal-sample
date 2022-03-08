@@ -68,7 +68,6 @@ class LoginFragment : KaalFragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 loginPassword.text.let { viewModel.checkPassword(it.toString()) }
-                //passwordStrengthIcon.drawable.let { viewModel.passwordStrengthState.value.toString()) }
             }
 
             override fun afterTextChanged(s: Editable?) {}
@@ -103,9 +102,11 @@ class LoginFragment : KaalFragment() {
         if (loginUseCase) {
             switchLogin.setText(R.string.login_screen_register_u)
             loginButton.setText(R.string.login_screen_login)
+            passwordStrengthLayout.visibility = View.INVISIBLE
         } else {
             switchLogin.setText(R.string.login_screen_login_u)
             loginButton.setText(R.string.login_screen_register)
+            passwordStrengthLayout.visibility = View.VISIBLE
         }
     }
 
