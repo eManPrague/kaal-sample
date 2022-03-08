@@ -8,4 +8,4 @@ data class PasswordStrengthState(
     @StringRes val errorTextId: Int,
     @ColorRes val textColorId: Int,
     @DrawableRes val iconSourceId: Int
-    )
+)

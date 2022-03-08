@@ -3,15 +3,15 @@ package cz.eman.kaalsample.presentation.feature.login.states
 import cz.eman.kaalsample.R
 import cz.eman.kaalsample.domain.feature.usermanagement.model.PasswordStrength
 
-fun PasswordStrength.toPasswordState() : PasswordStrengthState =
-    when(this) {
+fun PasswordStrength.toPasswordState(): PasswordStrengthState =
+    when (this) {
         is PasswordStrength.Invalid ->
             PasswordStrengthState(
                 R.string.password_strength_invalid,
                 R.color.password_strength_invalid,
                 R.drawable.ic_baseline_cancel_24
             )
-            is PasswordStrength.Empty ->
+        is PasswordStrength.Empty ->
             PasswordStrengthState(
                 R.string.password_strength_empty,
                 R.color.password_strength_invalid,

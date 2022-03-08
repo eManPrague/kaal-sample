@@ -17,18 +17,18 @@ class CheckPasswordStrengthUseCase(
             forbiddenChars.any { it in params } -> PasswordStrength.Invalid
 
             params.length >= 7 && (
-                        params.toCharArray().any(Character::isUpperCase) &&
-                        params.toCharArray().any(Character::isLowerCase) &&
-                        params.toCharArray().any(Character::isDigit) &&
-                        suggestedChars.any { it in params }
-                    ) -> PasswordStrength.Strong
+                params.toCharArray().any(Character::isUpperCase) &&
+                    params.toCharArray().any(Character::isLowerCase) &&
+                    params.toCharArray().any(Character::isDigit) &&
+                    suggestedChars.any { it in params }
+                ) -> PasswordStrength.Strong
 
             params.length >= 7 && (
-                        params.toCharArray().any(Character::isUpperCase) ||
-                        params.toCharArray().any(Character::isLowerCase) ||
-                        params.toCharArray().any(Character::isDigit) ||
-                        suggestedChars.any { it in params }
-                    ) -> PasswordStrength.Medium
+                params.toCharArray().any(Character::isUpperCase) ||
+                    params.toCharArray().any(Character::isLowerCase) ||
+                    params.toCharArray().any(Character::isDigit) ||
+                    suggestedChars.any { it in params }
+                ) -> PasswordStrength.Medium
 
             params.isEmpty() -> PasswordStrength.Empty
 

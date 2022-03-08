@@ -44,7 +44,6 @@ class LoginViewModel(
 
     var loginUseCase = true
 
-
     fun processUser(userName: String, password: String) {
         val user = User(userName, password)
         logVerbose("process user: $userName with usecase login = $loginUseCase")
