@@ -17,4 +17,6 @@ interface MoviesRepository {
     suspend fun changeFavoriteStatus(movie: Movie, newFavoriteStatus: Boolean)
 
     suspend fun getMovieById(id: Int): Result<Movie>
+
+    suspend fun searchMovieByTitle(query: String): Result<List<Movie>>
 }

@@ -53,4 +53,17 @@ class MoviesRepositoryImpl(
         return memoryMovieDataSource.getMovieById(id)
     }
 
+    override suspend fun searchMovieByTitle(query: String): Result<List<Movie>> {
+         return when (val memoryDataResult = memoryMovieDataSource.search(query)) {
+            is Result.Success -> memoryDataResult
+            else -> {
+                val result = movieRemoteDataSource.search(query)
+                if (result is Result.Success) {
+                    movieCache.saveAll(result.data)
+                }
+                result
+            }
+        }
+    }
+
 }

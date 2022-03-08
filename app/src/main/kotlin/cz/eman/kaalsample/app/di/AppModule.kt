@@ -7,6 +7,7 @@ import cz.eman.kaalsample.data.feature.usermanagement.repository.UserRepositoryI
 import cz.eman.kaalsample.domain.feature.movies.common.repository.MoviesRepository
 import cz.eman.kaalsample.domain.feature.movies.favorite.usecase.GetFavoriteMoviesUseCase
 import cz.eman.kaalsample.domain.feature.movies.popular.usecase.GetPopularMoviesUseCase
+import cz.eman.kaalsample.domain.feature.movies.search.usecase.SearchMoviesUseCase
 import cz.eman.kaalsample.domain.feature.usermanagement.repository.SecurityRepository
 import cz.eman.kaalsample.domain.feature.usermanagement.repository.UserRepository
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.AuthorizeUserUseCase
@@ -39,6 +40,8 @@ val appModule = module {
     single<SecurityRepository> {
         SecurityRepositoryImpl()
     }
+
+    single { SearchMoviesUseCase(moviesRepository = get()) }
 
     single { CheckPasswordStrengthUseCase(securityRepository = get()) }
 

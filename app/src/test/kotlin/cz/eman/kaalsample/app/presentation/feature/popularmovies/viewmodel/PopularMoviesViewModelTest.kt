@@ -6,8 +6,8 @@ import androidx.lifecycle.viewModelScope
 import cz.eman.kaal.domain.result.ErrorResult
 import cz.eman.kaal.domain.result.Result
 import cz.eman.kaalsample.domain.feature.movies.popular.usecase.GetPopularMoviesUseCase
-import cz.eman.kaalsample.presentation.feature.popularmovies.states.PopularMoviesViewStates
-import cz.eman.kaalsample.presentation.feature.popularmovies.viewmodel.PopularMoviesViewModel
+import cz.eman.kaalsample.presentation.feature.popularmovies.states.SearchMovieViewStates
+import cz.eman.kaalsample.presentation.feature.popularmovies.viewmodel.SearchMovieViewModel
 import io.kotlintest.TestCase
 import io.kotlintest.TestResult
 import io.kotlintest.matchers.types.shouldBeInstanceOf
@@ -35,9 +35,9 @@ import kotlinx.coroutines.test.setMain
 //@InternalCoroutinesApi
 class PopularMoviesViewModelTest : StringSpec() {
 
-    private val states = mutableListOf<PopularMoviesViewStates>()
+    private val states = mutableListOf<SearchMovieViewStates>()
 
-    lateinit var viewModel: PopularMoviesViewModel
+    lateinit var viewModel: SearchMovieViewModel
 
     lateinit var getPopularMoviesUseCase: GetPopularMoviesUseCase
 
@@ -47,7 +47,7 @@ class PopularMoviesViewModelTest : StringSpec() {
         fakeRunningOnMainThread()
         Dispatchers.setMain(mainThreadSurrogate)
         mockViewModelDependencies()
-        this.viewModel = spyk(PopularMoviesViewModel(getPopularMoviesUseCase))
+        this.viewModel = spyk(SearchMovieViewModel(getPopularMoviesUseCase))
 
         mockkStatic("androidx.lifecycle.ViewModelKt")
         this.viewModel.viewState.observeForever { state ->
@@ -73,7 +73,7 @@ class PopularMoviesViewModelTest : StringSpec() {
                 override fun isMainThread(): Boolean = true
             })
 
-        this.viewModel = PopularMoviesViewModel(mockk())
+        this.viewModel = SearchMovieViewModel(mockk())
     }
 
     private fun mockViewModelDependencies() {
@@ -89,14 +89,14 @@ class PopularMoviesViewModelTest : StringSpec() {
         }
 
         "state should be NotInitialized on start"{
-            viewModel.viewState.value shouldBe PopularMoviesViewStates.NotInitialized
+            viewModel.viewState.value shouldBe SearchMovieViewStates.NotInitialized
         }
 
         "state should be Loading after call the loading"{
             runTest {
                 coEvery { getPopularMoviesUseCase(Unit) } returns Result.Success(listOf())
                 viewModel.loadPopularMovies()
-                viewModel.viewState.value shouldBe PopularMoviesViewStates.Loading
+                viewModel.viewState.value shouldBe SearchMovieViewStates.Loading
             }
         }
 
@@ -118,7 +118,7 @@ class PopularMoviesViewModelTest : StringSpec() {
                 delay(BE_SURE_TIME)
             }
             val state = viewModel.viewState.value
-            state.shouldBeInstanceOf<PopularMoviesViewStates.MoviesLoaded>()
+            state.shouldBeInstanceOf<SearchMovieViewStates.MoviesLoaded>()
         }
 
         "state should be Error after fail the loading"{
@@ -130,12 +130,12 @@ class PopularMoviesViewModelTest : StringSpec() {
             }
 
             val state = viewModel.viewState.value
-            state.shouldBeInstanceOf<PopularMoviesViewStates.LoadingError>()
+            state.shouldBeInstanceOf<SearchMovieViewStates.LoadingError>()
         }
 
         "state should be Invalid after viewModel invalidated"{
             viewModel.invalidate()
-            viewModel.viewState.value shouldBe PopularMoviesViewStates.Invalid
+            viewModel.viewState.value shouldBe SearchMovieViewStates.Invalid
         }
 
     }
