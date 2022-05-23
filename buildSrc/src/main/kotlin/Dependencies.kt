@@ -105,5 +105,6 @@ object Dependencies {
         const val archCoreTest = "androidx.arch.core:core-testing:${Versions.archCore}"
         val archUnit = "com.tngtech.archunit:archunit-junit4:${Versions.archUnit}"
         val slf4j = "org.slf4j:slf4j-simple:${Versions.slf4j}"
+        val kotest = "io.kotest:kotest-runner-junit5:${Versions.kotest}"
     }
 }

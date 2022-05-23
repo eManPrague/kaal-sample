@@ -2,12 +2,15 @@ package cz.eman.kaalsample.app.di
 
 import com.squareup.picasso.Picasso
 import cz.eman.kaalsample.data.feature.movies.common.repository.MoviesRepositoryImpl
+import cz.eman.kaalsample.data.feature.usermanagement.repository.SecurityRepositoryImpl
 import cz.eman.kaalsample.data.feature.usermanagement.repository.UserRepositoryImpl
 import cz.eman.kaalsample.domain.feature.movies.common.repository.MoviesRepository
 import cz.eman.kaalsample.domain.feature.movies.favorite.usecase.GetFavoriteMoviesUseCase
 import cz.eman.kaalsample.domain.feature.movies.popular.usecase.GetPopularMoviesUseCase
+import cz.eman.kaalsample.domain.feature.usermanagement.repository.SecurityRepository
 import cz.eman.kaalsample.domain.feature.usermanagement.repository.UserRepository
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.AuthorizeUserUseCase
+import cz.eman.kaalsample.domain.feature.usermanagement.usecase.CheckPassStrengthUseCase
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.RegisterUserUseCase
 import cz.eman.kaalsample.infrastructure.core.di.DiInfrastructure
 import cz.eman.kaalsample.infrastructure.file.image.PicassoImageLoader
@@ -33,11 +36,17 @@ val appModule = module {
         UserRepositoryImpl(userDataSource = get())
     }
 
+    single<SecurityRepository> {
+        SecurityRepositoryImpl()
+    }
+
     single { GetPopularMoviesUseCase(moviesRepository = get()) }
 
     single { GetFavoriteMoviesUseCase(moviesRepository = get()) }
 
     single { AuthorizeUserUseCase(userRepository = get()) }
+
+    single { CheckPassStrengthUseCase(securityRepository = get()) }
 
     single { RegisterUserUseCase(userRepository = get()) }
 

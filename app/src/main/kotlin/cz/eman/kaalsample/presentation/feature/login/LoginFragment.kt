@@ -1,6 +1,8 @@
 package cz.eman.kaalsample.presentation.feature.login
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +14,11 @@ import cz.eman.kaal.presentation.fragment.KaalFragment
 import cz.eman.kaalsample.R
 import cz.eman.kaalsample.presentation.feature.login.states.LoginStates
 import cz.eman.kaalsample.presentation.feature.login.viewModel.LoginViewModel
+import cz.eman.kaalsample.presentation.feature.login.viewModel.PasswordViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
+
 
 /**
  *  @author stefan.toth@eman.cz
@@ -22,6 +26,7 @@ import timber.log.Timber
 class LoginFragment : KaalFragment() {
 
     private val viewModel by viewModel<LoginViewModel>()
+    private val passwordViewModel by viewModel<PasswordViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
@@ -64,7 +69,26 @@ class LoginFragment : KaalFragment() {
             switchUseCase(!viewModel.loginUseCase)
         }
 
+        loginPassword.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                passwordViewModel.onPasswordChange(s.toString())
+
+                loginPassword.error = passwordViewModel.data.value?.passwordText
+            }
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int, count: Int,
+                after: Int
+            ) {
+            }
+
+            override fun afterTextChanged(s: Editable) {
+            }
+        })
+
         loginButton.setOnClickListener {
+
+
             viewModel.processUser(userName = loginUserName.text.toString().trim(),
                     password = loginPassword.text.toString().trim())
         }

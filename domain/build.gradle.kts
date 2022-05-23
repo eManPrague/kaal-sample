@@ -23,6 +23,7 @@ dependencies {
     testImplementation(Dependencies.TestLibs.mockkUnit)
     testImplementation(Dependencies.TestLibs.archUnit)
     testImplementation(Dependencies.TestLibs.slf4j)
+    testImplementation(Dependencies.TestLibs.kotest)
 }
 
 tasks.withType<KotlinCompile> {
