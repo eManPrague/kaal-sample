@@ -91,6 +91,7 @@ dependencies {
     testImplementation(Dependencies.TestLibs.archCoreTest)
     testImplementation(Dependencies.TestLibs.archUnit)
     testImplementation(Dependencies.TestLibs.slf4j)
+    testImplementation(Dependencies.TestLibs.kotest)
 }
 
 val dokka by tasks.getting(DokkaTask::class) {

@@ -177,6 +177,7 @@ dependencies {
     testImplementation(Dependencies.TestLibs.kotlinCoroutinesTest)
     testImplementation(Dependencies.TestLibs.kotlinTest)
     testImplementation(Dependencies.TestLibs.mockkUnit)
+    testImplementation(Dependencies.TestLibs.kotest)
 
     androidTestImplementation(Dependencies.TestLibs.mockkInstrument)
     androidTestImplementation(Dependencies.TestLibs.uiAutomator)
