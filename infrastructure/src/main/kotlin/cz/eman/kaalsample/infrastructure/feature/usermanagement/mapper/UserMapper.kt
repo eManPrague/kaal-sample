@@ -9,5 +9,7 @@ import cz.eman.kaalsample.infrastructure.feature.usermanagement.db.entity.UserEn
 object UserMapper {
 
     fun mapUserEntityToUser(entity: UserEntity) =
-        User(username = entity.username, password = entity.password)
+        User(username = entity.username,
+            password = entity.password
+        )
 }

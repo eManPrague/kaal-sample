@@ -13,6 +13,7 @@ plugins {
 dependencies {
     implementation(project(":domain"))
 
+
     // Kotlin
     implementation(Dependencies.Kotlin.kotlinStbLib)
     implementation(Dependencies.Kotlin.coroutinesCore)
