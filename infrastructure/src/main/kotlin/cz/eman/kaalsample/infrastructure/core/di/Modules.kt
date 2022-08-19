@@ -5,7 +5,9 @@ import cz.eman.kaalsample.domain.feature.movies.favorite.source.FavoritesMovieDa
 import cz.eman.kaalsample.domain.feature.usermanagement.source.UserDataSource
 import cz.eman.kaalsample.infrastructure.core.room.MovieDatabase
 import cz.eman.kaalsample.domain.feature.movies.common.source.MoviesDataSource
+import cz.eman.kaalsample.domain.feature.usermanagement.source.SecurityDataSource
 import cz.eman.kaalsample.infrastructure.core.di.DiInfrastructure
+import cz.eman.kaalsample.infrastructure.core.room.SecurityDatabase
 import cz.eman.kaalsample.infrastructure.feature.movies.common.apiservice.MOVIE_DB_HOST
 import cz.eman.kaalsample.infrastructure.feature.movies.common.apiservice.MovieApiService
 import cz.eman.kaalsample.infrastructure.feature.movies.common.apiservice.interceptor.ServerRequestInterceptor
@@ -13,6 +15,8 @@ import cz.eman.kaalsample.infrastructure.feature.movies.common.cache.MemoryMovie
 import cz.eman.kaalsample.infrastructure.feature.movies.common.source.MoviesMemoryDataSource
 import cz.eman.kaalsample.infrastructure.feature.movies.common.source.MoviesRemoteSource
 import cz.eman.kaalsample.infrastructure.feature.movies.favorite.source.FavoritesMovieLocalDataSource
+import cz.eman.kaalsample.infrastructure.feature.usermanagement.db.dao.SecurityRequirementsDao
+import cz.eman.kaalsample.infrastructure.feature.usermanagement.db.dao.UserDao_Impl
 import cz.eman.kaalsample.infrastructure.feature.usermanagement.source.UserLocalDataSource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -54,6 +58,17 @@ val databaseModule = module {
     }*/
 
     single { MovieDatabase.getInstance(context = get(), factory = null) }
+
+    /*
+    single { SecurityDatabase.getInstance(context = get(), factory = null) }
+
+    fun provideDao(database : SecurityDatabase) : SecurityRequirementsDao {
+        return database.securityRequirementsDao
+    }
+
+    single { provideDao(get())}
+
+     */
 
     single<FavoritesMovieDataSource> {
         FavoritesMovieLocalDataSource(favoriteMovieDao = get<MovieDatabase>().favoriteMovieDao)

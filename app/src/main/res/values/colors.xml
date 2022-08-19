@@ -7,4 +7,9 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="grey">#A3A3A3</color>
+
+    <color name="green">#56C156</color>
+    <color name="darkGreen">#15A215</color>
+    <color name="error">#D71818</color>
+    <color name="warning">#ECD32E</color>
 </resources>

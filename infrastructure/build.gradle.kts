@@ -62,6 +62,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":data"))
 
     implementation(Dependencies.Kotlin.kotlinStbLib)
     implementation(Dependencies.Kotlin.coroutinesCore)

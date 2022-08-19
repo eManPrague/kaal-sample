@@ -1,6 +1,7 @@
 package cz.eman.kaalsample.presentation.feature.login.di
 
 import cz.eman.kaalsample.presentation.feature.login.viewModel.LoginViewModel
+import cz.eman.kaalsample.presentation.feature.login.viewModel.SecurityViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -13,6 +14,12 @@ val loginModule = module {
         LoginViewModel(
                 authoriseUser = get(),
                 registerUser = get()
+        )
+    }
+
+    viewModel {
+        SecurityViewModel(
+            checkPasswordStrength = get()
         )
     }
 }

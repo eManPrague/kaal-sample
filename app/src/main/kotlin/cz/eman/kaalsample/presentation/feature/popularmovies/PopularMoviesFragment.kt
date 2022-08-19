@@ -63,7 +63,7 @@ class PopularMoviesFragment : KaalFragment() {
     }
 
     private fun registerEvents() {
-        viewModel.viewState.observe(this, Observer {
+        viewModel.viewState.observe(viewLifecycleOwner, Observer {
             showLoading(it.showLoading)
             showError(null)
             Timber.d("Popular movies state even observed: ${it.javaClass.simpleName}")

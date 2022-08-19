@@ -45,4 +45,20 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="errorAppearance">
+        <item name="android:textColor">@color/error</item>
+    </style>
+
+    <style name="warningAppearance">
+        <item name="android:textColor">@color/warning</item>
+    </style>
+
+    <style name="normalAppearance">
+        <item name="android:textColor">@color/green</item>
+    </style>
+
+    <style name="amazingAppearance">
+        <item name="android:textColor">@color/darkGreen</item>
+    </style>
+
 </resources>
