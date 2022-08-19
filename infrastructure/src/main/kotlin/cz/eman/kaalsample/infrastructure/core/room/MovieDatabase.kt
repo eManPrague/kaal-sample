@@ -8,7 +8,9 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.sqlite.db.SupportSQLiteOpenHelper
 import cz.eman.kaalsample.infrastructure.feature.movies.favorite.db.dao.FavoriteMovieDao
 import cz.eman.kaalsample.infrastructure.feature.movies.favorite.db.entity.FavoriteMovieEntity
+import cz.eman.kaalsample.infrastructure.feature.usermanagement.db.dao.PswdNiceCharsDao
 import cz.eman.kaalsample.infrastructure.feature.usermanagement.db.dao.UserDao
+import cz.eman.kaalsample.infrastructure.feature.usermanagement.db.entity.PswdNiceCharsEntity
 import cz.eman.kaalsample.infrastructure.feature.usermanagement.db.entity.UserEntity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -18,11 +20,12 @@ import kotlinx.coroutines.launch
  * @author vsouhrada (vaclav.souhrada@eman.cz)
  * @since 0.1.0
  */
-@Database(entities = [FavoriteMovieEntity::class, UserEntity::class], version = 1)
+@Database(entities = [FavoriteMovieEntity::class, UserEntity::class, PswdNiceCharsEntity::class], version = 1)
 abstract class MovieDatabase : RoomDatabase() {
 
     abstract val favoriteMovieDao: FavoriteMovieDao
     abstract val userDao: UserDao
+    abstract val pswdDao: PswdNiceCharsDao
 
     companion object {
         @Volatile

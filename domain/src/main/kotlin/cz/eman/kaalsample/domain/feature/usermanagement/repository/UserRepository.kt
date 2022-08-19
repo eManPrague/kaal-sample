@@ -11,4 +11,10 @@ interface UserRepository {
     suspend fun authorizeUser(user: User): Result<User>
 
     suspend fun registerUser(user: User): Result<User>
+
+    suspend fun getMinPswLength(): Int
+
+    suspend fun getForbiddencharsInPswd(): String
+
+    suspend fun getSpecialCharsInPswd(): String
 }

@@ -1,10 +1,13 @@
 package cz.eman.kaalsample.presentation.feature.login
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.print.PrintHelper
@@ -12,6 +15,7 @@ import cz.eman.kaal.presentation.fragment.KaalFragment
 import cz.eman.kaalsample.R
 import cz.eman.kaalsample.presentation.feature.login.states.LoginStates
 import cz.eman.kaalsample.presentation.feature.login.viewModel.LoginViewModel
+import cz.eman.kaalsample.presentation.feature.login.viewModel.SecurityViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -22,6 +26,7 @@ import timber.log.Timber
 class LoginFragment : KaalFragment() {
 
     private val viewModel by viewModel<LoginViewModel>()
+    private val securityViewModel by viewModel<SecurityViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
@@ -65,8 +70,10 @@ class LoginFragment : KaalFragment() {
         }
 
         loginButton.setOnClickListener {
-            viewModel.processUser(userName = loginUserName.text.toString().trim(),
-                    password = loginPassword.text.toString().trim())
+            viewModel.processUser(
+                userName = loginUserName.text.toString().trim(),
+                password = loginPassword.text.toString().trim()
+            )
         }
 
         eman.setOnClickListener {
@@ -74,6 +81,25 @@ class LoginFragment : KaalFragment() {
             loginPassword.setText("travolta")
         }
 
+        loginPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                loginPassword.text.let { securityViewModel.onPswdChanged(it.toString()) }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {}
+        })
+
+        securityViewModel.pswdStrength.observe(viewLifecycleOwner) {
+            loginError.setText(it.id)
+            loginError.setTextColor(ContextCompat.getColor(requireContext(), it.colorRes))
+        }
+
+        securityViewModel.pswdStrengthError.observe(viewLifecycleOwner) {
+            loginError.text = it
+            loginError.setTextColor(ContextCompat.getColor(requireContext(), R.color.pswd_error))
+        }
     }
 
     private fun switchUseCase(loginUseCase: Boolean) {

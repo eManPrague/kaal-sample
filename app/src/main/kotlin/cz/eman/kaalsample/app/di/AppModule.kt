@@ -8,6 +8,7 @@ import cz.eman.kaalsample.domain.feature.movies.favorite.usecase.GetFavoriteMovi
 import cz.eman.kaalsample.domain.feature.movies.popular.usecase.GetPopularMoviesUseCase
 import cz.eman.kaalsample.domain.feature.usermanagement.repository.UserRepository
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.AuthorizeUserUseCase
+import cz.eman.kaalsample.domain.feature.usermanagement.usecase.CheckPswdStrengthUseCase
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.RegisterUserUseCase
 import cz.eman.kaalsample.infrastructure.core.di.DiInfrastructure
 import cz.eman.kaalsample.infrastructure.file.image.PicassoImageLoader
@@ -22,15 +23,18 @@ val appModule = module {
 
     single<MoviesRepository> {
         MoviesRepositoryImpl(
-                movieRemoteDataSource = get(named(DiInfrastructure.DATA_STORE_REMOTE)),
-                memoryMovieDataSource = get(named(DiInfrastructure.DATA_STORE_IN_MEMORY)),
-                favoritesMovieDataSource = get(),
-                movieCache = get()
+            movieRemoteDataSource = get(named(DiInfrastructure.DATA_STORE_REMOTE)),
+            memoryMovieDataSource = get(named(DiInfrastructure.DATA_STORE_IN_MEMORY)),
+            favoritesMovieDataSource = get(),
+            movieCache = get()
         )
     }
 
     single<UserRepository> {
-        UserRepositoryImpl(userDataSource = get())
+        UserRepositoryImpl(
+            userDataSource = get(),
+            localSecurityDataSource = get()
+        )
     }
 
     single { GetPopularMoviesUseCase(moviesRepository = get()) }
@@ -43,4 +47,5 @@ val appModule = module {
 
     single { PicassoImageLoader(Picasso.with(get())) }
 
+    single { CheckPswdStrengthUseCase(repository = get()) }
 }
