@@ -30,6 +30,12 @@
 
     <string name="splash_fragment_title">Splash</string>
 
+    <!-- Pswd strength Check -->
+    <string name="pswd_strong">Strong pswd</string>
+    <string name="pswd_medium">Medium pswd</string>
+    <string name="pswd_weak">Weak pswd</string>
+    <string name="pswd_short">Short pswd</string>
+    <string name="pswd_invalid">Invalid pswd</string>
 
     <!-- Login -->
     <string name="login_fragment_title">Login</string>
