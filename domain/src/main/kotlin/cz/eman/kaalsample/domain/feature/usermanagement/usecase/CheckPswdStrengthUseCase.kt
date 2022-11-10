@@ -15,7 +15,7 @@ class CheckPswdStrengthUseCase(
 ) : UseCaseResult<PswdStrength, EncriptedPswd>() {
 
     override suspend fun doWork(encriptedPswd: EncriptedPswd): Result<PswdStrength> {
-        val pswdLength = encriptedPswd.pswd.trim().length
+        val pswdLength = encriptedPswd.pswd.length
         if (pswdLength == 0)
             return Result.Success(PswdStrength.INVALID)
 
@@ -26,8 +26,8 @@ class CheckPswdStrengthUseCase(
             return Result.Error(it)
         }
 
-        repository.getInvalidCharsInPswd().onSuccess {
-            if(encriptedPswd.toString().contains(it as CharSequence))
+        repository.getInvalidCharsInPswd().onSuccess {invalidChars ->
+            if(invalidChars.any {encriptedPswd.pswd.contains(it)})
                 return Result.Success(PswdStrength.INVALID)
         }.onError {
             return Result.Error(it)

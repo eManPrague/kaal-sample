@@ -63,7 +63,7 @@ class LoginFragment : KaalFragment() {
         // JK Colors from resources https://stackoverflow.com/questions/4602902/how-to-set-the-text-color-of-textview-in-code
         pswdStrengthViewModel.data.observe(viewLifecycleOwner) {
             if(!loginViewModel.loginUseCase && it != null) {
-                loginButton.isEnabled = it.isOk
+                loginButton.isEnabled = it.isOk && !loginUserName.text.isNullOrEmpty()
                 pswdStrengthHint.setText(it.message)
                 pswdStrengthHint.setTextColor(it.color)
             }
@@ -78,8 +78,8 @@ class LoginFragment : KaalFragment() {
         }
 
         loginButton.setOnClickListener {
-            loginViewModel.processUser(userName = loginUserName.text.toString().trim(),
-                    password = loginPassword.text.toString().trim())
+            loginViewModel.processUser(userName = loginUserName.text.toString(),
+                    password = loginPassword.text.toString())
         }
 
         eman.setOnClickListener {
@@ -92,7 +92,19 @@ class LoginFragment : KaalFragment() {
             override fun afterTextChanged(s: Editable) {}
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                pswdStrengthViewModel.onPswdChanged(loginPassword.text.toString())
+                // Don't run it on login
+                if(!loginViewModel.loginUseCase)
+                    pswdStrengthViewModel.onPswdChanged(loginPassword.text.toString())
+            }
+        })
+
+        loginUserName.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                // Don't run it on login
+                if(!loginViewModel.loginUseCase && pswdStrengthViewModel.data.value?.isOk == true)
+                    loginButton.isEnabled = !loginUserName.text.isNullOrEmpty()
             }
         })
     }
@@ -109,7 +121,10 @@ class LoginFragment : KaalFragment() {
             loginButton.setText(R.string.login_screen_register)
             pswdStrengthHint.visibility = View.VISIBLE
             pswdStrengthViewModel.data.value?.let {
-                    loginButton.isEnabled = it.isOk
+                loginButton.isEnabled = it.isOk && !loginUserName.text.isNullOrEmpty()
+                // For case user writes password and clicks on register - show pswd strength hint
+                if(pswdStrengthHint.text.isEmpty() && !loginPassword.text.isNullOrEmpty())
+                    pswdStrengthViewModel.onPswdChanged(loginPassword.text.toString())
             }
         }
     }

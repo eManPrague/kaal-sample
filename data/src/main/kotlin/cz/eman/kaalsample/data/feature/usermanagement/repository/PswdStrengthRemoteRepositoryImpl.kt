@@ -9,7 +9,7 @@ import cz.eman.kaalsample.domain.feature.usermanagement.repository.PswdStrengthR
 class PswdStrengthRemoteRepositoryImpl(
 ) : PswdStrengthRemoteDataSource {
 
-    private var _invalidChars = "\\|\"~`"
+    private var _invalidChars = "\\|\"~` "
     private var _minPswdLength = 6
 
     override suspend fun getInvalidCharsInPswd(): Result<String> {
