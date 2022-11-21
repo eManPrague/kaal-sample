@@ -6,28 +6,25 @@ import cz.eman.kaal.domain.result.onError
 import cz.eman.kaal.domain.result.onSuccess
 import cz.eman.kaal.presentation.viewmodel.KaalViewModel
 import cz.eman.kaal.presentation.viewmodel.launch
+import cz.eman.kaalsample.R
 import cz.eman.kaalsample.domain.feature.usermanagement.model.EncriptedPswd
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.CheckPswdStrengthUseCase
 import cz.eman.kaalsample.presentation.feature.login.mapper.toVo
-import cz.eman.kaalsample.presentation.feature.login.model.RegisterUserVo
+import cz.eman.kaalsample.presentation.feature.login.model.PswdStrengthVo
 
-class PswdStrenghtViewModel(
+class PswdStrengthViewModel(
     private val checkPswdStrength: CheckPswdStrengthUseCase
 ) : KaalViewModel() {
 
-    private val _data = MutableLiveData<RegisterUserVo>()
-    val data: LiveData<RegisterUserVo> = _data
-
-    val state = MutableLiveData<String>()
+    private val _data = MutableLiveData<PswdStrengthVo>()
+    val data: LiveData<PswdStrengthVo> = _data
 
     fun onPswdChanged(pswd: String) {
         launch {
             checkPswdStrength(EncriptedPswd(pswd)).onSuccess {
-                _data.value = data.value?.copy(
-                    error = it.toVo()
-                )
+                _data.value = it.toVo()
             }.onError {
-                state.value = "ERROR"
+                _data.value = PswdStrengthVo(false, R.color.red, R.string.password_error )
             }
         }
     }

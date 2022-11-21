@@ -8,7 +8,9 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.sqlite.db.SupportSQLiteOpenHelper
 import cz.eman.kaalsample.infrastructure.feature.movies.favorite.db.dao.FavoriteMovieDao
 import cz.eman.kaalsample.infrastructure.feature.movies.favorite.db.entity.FavoriteMovieEntity
+import cz.eman.kaalsample.infrastructure.feature.usermanagement.db.dao.PswdStrengthConfigDao
 import cz.eman.kaalsample.infrastructure.feature.usermanagement.db.dao.UserDao
+import cz.eman.kaalsample.infrastructure.feature.usermanagement.db.entity.PswdStrengthConfigEntity
 import cz.eman.kaalsample.infrastructure.feature.usermanagement.db.entity.UserEntity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -18,11 +20,12 @@ import kotlinx.coroutines.launch
  * @author vsouhrada (vaclav.souhrada@eman.cz)
  * @since 0.1.0
  */
-@Database(entities = [FavoriteMovieEntity::class, UserEntity::class], version = 1)
+@Database(entities = [FavoriteMovieEntity::class, UserEntity::class, PswdStrengthConfigEntity::class], version = 1)
 abstract class MovieDatabase : RoomDatabase() {
 
     abstract val favoriteMovieDao: FavoriteMovieDao
     abstract val userDao: UserDao
+    abstract val pswdStrengthConfigDao: PswdStrengthConfigDao
 
     companion object {
         @Volatile
@@ -71,6 +74,7 @@ abstract class MovieDatabase : RoomDatabase() {
                         GlobalScope.launch {
                             val appDb = getInstance(context, openHelperFactory)
                             appDb.userDao.insert(populateDefaultUserData())
+                            appDb.pswdStrengthConfigDao.setPswdStrengthConfig(populateDefaultPswdStrengthConfig())
                         }
                     }
                 })
@@ -79,6 +83,8 @@ abstract class MovieDatabase : RoomDatabase() {
         }
 
         private fun populateDefaultUserData() = UserEntity("john", "travolta")
+
+        private fun populateDefaultPswdStrengthConfig() = PswdStrengthConfigEntity(invalidChars = """ \"#$'/[]^{|}""", pswdLength = 8)
 
     }
 

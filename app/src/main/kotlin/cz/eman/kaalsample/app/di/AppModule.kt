@@ -2,14 +2,21 @@ package cz.eman.kaalsample.app.di
 
 import com.squareup.picasso.Picasso
 import cz.eman.kaalsample.data.feature.movies.common.repository.MoviesRepositoryImpl
+import cz.eman.kaalsample.data.feature.usermanagement.repository.PswdStrengthRepositoryImpl
 import cz.eman.kaalsample.data.feature.usermanagement.repository.UserRepositoryImpl
+import cz.eman.kaalsample.data.feature.usermanagement.repository.source.PswdStrengthConfigLocalDataSource
+import cz.eman.kaalsample.data.feature.usermanagement.repository.source.PswdStrengthConfigRemoteDataSource
+import cz.eman.kaalsample.data.feature.usermanagement.repository.source.PswdStrengthConfigRemoteDataSourceImpl
 import cz.eman.kaalsample.domain.feature.movies.common.repository.MoviesRepository
 import cz.eman.kaalsample.domain.feature.movies.favorite.usecase.GetFavoriteMoviesUseCase
 import cz.eman.kaalsample.domain.feature.movies.popular.usecase.GetPopularMoviesUseCase
+import cz.eman.kaalsample.domain.feature.usermanagement.repository.PswdStrengthRepository
 import cz.eman.kaalsample.domain.feature.usermanagement.repository.UserRepository
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.AuthorizeUserUseCase
+import cz.eman.kaalsample.domain.feature.usermanagement.usecase.CheckPswdStrengthUseCase
 import cz.eman.kaalsample.domain.feature.usermanagement.usecase.RegisterUserUseCase
 import cz.eman.kaalsample.infrastructure.core.di.DiInfrastructure
+import cz.eman.kaalsample.infrastructure.feature.usermanagement.source.PswdStrengthConfigLocalDataSourceImpl
 import cz.eman.kaalsample.infrastructure.file.image.PicassoImageLoader
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -33,6 +40,18 @@ val appModule = module {
         UserRepositoryImpl(userDataSource = get())
     }
 
+    /*single<PswdStrengthConfigLocalDataSource> {
+        PswdStrengthConfigLocalDataSourceImpl(pswdStrengthConfigDao = get())
+    }*/
+
+    single<PswdStrengthConfigRemoteDataSource> {
+        PswdStrengthConfigRemoteDataSourceImpl()
+    }
+
+    single<PswdStrengthRepository> {
+        PswdStrengthRepositoryImpl(localDataSource = get(), remoteDataSource = get())
+    }
+
     single { GetPopularMoviesUseCase(moviesRepository = get()) }
 
     single { GetFavoriteMoviesUseCase(moviesRepository = get()) }
@@ -42,5 +61,7 @@ val appModule = module {
     single { RegisterUserUseCase(userRepository = get()) }
 
     single { PicassoImageLoader(Picasso.with(get())) }
+
+    single { CheckPswdStrengthUseCase(repository = get())}
 
 }

@@ -2,35 +2,29 @@ package cz.eman.kaalsample.data.feature.usermanagement.repository
 
 import cz.eman.kaal.domain.result.Result
 import cz.eman.kaal.domain.result.onSuccess
-import cz.eman.kaalsample.data.feature.usermanagement.repository.source.PswdStrengthLocalDataSource
-import cz.eman.kaalsample.data.feature.usermanagement.repository.source.PswdStrengthRemoteDataSource
+import cz.eman.kaalsample.data.feature.usermanagement.repository.source.PswdStrengthConfigLocalDataSource
+import cz.eman.kaalsample.data.feature.usermanagement.repository.source.PswdStrengthConfigRemoteDataSource
+import cz.eman.kaalsample.domain.feature.usermanagement.model.PswdStrengthConfig
 import cz.eman.kaalsample.domain.feature.usermanagement.repository.PswdStrengthRepository
 
 class PswdStrengthRepositoryImpl(
-    private val localDataSource: PswdStrengthLocalDataSource,
-    private val remoteDataSource: PswdStrengthRemoteDataSource
+    private val localDataSource: PswdStrengthConfigLocalDataSource,
+    private val remoteDataSource: PswdStrengthConfigRemoteDataSource
 ) : PswdStrengthRepository {
 
-    override suspend fun getInvalidCharsInPswd(): Result<String> {
-        localDataSource.getInvalidCharsInPswd().onSuccess {
+    override suspend fun getPswdStrengthConfig(): Result<PswdStrengthConfig> {
+        localDataSource.getPswdStrengthConfig().onSuccess {
             return Result.Success(it)
         }
-        return fetchInvalidCharsFromRemote()
+        return fetchPswdStrengthConfigFromRemote()
     }
 
-    override suspend fun getMinPswdLength(): Int {
-        return MIN_PSWD_LENGTH
-    }
-
-    companion object {
-        const val MIN_PSWD_LENGTH = 7
-    }
-
-    private suspend fun fetchInvalidCharsFromRemote(): Result<String> {
-        val result = remoteDataSource.getInvalidCharsInPswd()
-        if (result is Result.Success) {
-            localDataSource.saveInvalidCharsInPswd(result.data)
+    private suspend fun fetchPswdStrengthConfigFromRemote(): Result<PswdStrengthConfig> {
+        val result = remoteDataSource.getPswdStrengthConfig()
+        result.onSuccess {
+            localDataSource.savePswdStrengthConfig(it)
         }
         return result
     }
+
 }

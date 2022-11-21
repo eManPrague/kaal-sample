@@ -16,6 +16,7 @@ dependencies {
     // Kotlin
     implementation(Dependencies.Kotlin.kotlinStbLib)
     implementation(Dependencies.Kotlin.coroutinesCore)
+    //implementation(project(mapOf("path" to ":infrastructure")))
 
     // Tests
     testImplementation(Dependencies.TestLibs.junit)

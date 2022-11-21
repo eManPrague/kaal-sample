@@ -7,4 +7,10 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="grey">#A3A3A3</color>
+
+    <!-- Password strength bar colors -->
+    <color name="red">#FF0000</color>
+    <color name="orange">#FFB123</color>
+    <color name="yellow">#FFF307</color>
+    <color name="green">#54E854</color>
 </resources>

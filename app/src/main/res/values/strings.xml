@@ -30,9 +30,6 @@
 
     <string name="splash_fragment_title">Splash</string>
 
-
-    <string name="pswd_medium">Medium pswd</string>
-
     <!-- Login -->
     <string name="login_fragment_title">Login</string>
     <string name="login_screen_user_hint">Username</string>
@@ -43,5 +40,13 @@
     <string name="login_screen_login_u"><u>Login</u></string>
 
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Quisque tincidunt scelerisque libero. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Pellentesque arcu. Aenean placerat. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam. Nullam justo enim, consectetuer nec, ullamcorper ac, vestibulum in, elit. Sed ac dolor sit amet purus malesuada congue. Aliquam erat volutpat.</string>
+
+    <!-- Password strength -->
+    <string name="password_strong">Strong password</string>
+    <string name="password_medium">Medium password</string>
+    <string name="password_weak">Weak password</string>
+    <string name="password_short">Password too short</string>
+    <string name="password_invalid">Password contains invalid characters</string>
+    <string name="password_error">Something went wrong, please try again</string>
 
 </resources>
