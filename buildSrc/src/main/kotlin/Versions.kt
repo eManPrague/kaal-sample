@@ -43,7 +43,7 @@ object Versions {
     const val archCore = "2.1.0"
     val archUnit = "0.10.2"
     val slf4j = "1.7.26"
-    val kotest = "5.3"
+    val kotest = "5.4.2"
 
     // eMan Deps
     val kaal = "0.9.2"
